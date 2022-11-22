@@ -1,22 +1,22 @@
 package OP;
 
 public class HangHoa {
-	int MaHang;
+	String MaHang;
 	String TenHang;
-	int MaLoaiHang;
+	String MaLoaiHang;
 	float Gia;
 	
-	public HangHoa(int maHang, String tenHang, int maLoaiHang, float gia) {
+	public HangHoa(String maHang, String tenHang, String maLoaiHang, float gia) {
 		super();
 		MaHang = maHang;
 		TenHang = tenHang;
 		MaLoaiHang = maLoaiHang;
 		Gia = gia;
 	}
-	public int getMaHang() {
+	public String getMaHang() {
 		return MaHang;
 	}
-	public void setMaHang(int maHang) {
+	public void setMaHang(String maHang) {
 		MaHang = maHang;
 	}
 	public String getTenHang() {
@@ -25,10 +25,10 @@ public class HangHoa {
 	public void setTenHang(String tenHang) {
 		TenHang = tenHang;
 	}
-	public int getMaLoaiHang() {
+	public String getMaLoaiHang() {
 		return MaLoaiHang;
 	}
-	public void setMaLoaiHang(int maLoaiHang) {
+	public void setMaLoaiHang(String maLoaiHang) {
 		MaLoaiHang = maLoaiHang;
 	}
 	public float getGia() {

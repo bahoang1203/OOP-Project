@@ -1,21 +1,21 @@
 package OP;
 
 public class KhachHangThanThiet {
-	int MaKhachHang;
+	String MaKhachHang;
 	String TenKhachHang;
 	String SDT;
 	String DiaChi;
-	public KhachHangThanThiet(int maKhachHang, String tenKhachHang, String sDT, String diaChi) {
+	public KhachHangThanThiet(String maKhachHang, String tenKhachHang, String sDT, String diaChi) {
 		super();
 		MaKhachHang = maKhachHang;
 		TenKhachHang = tenKhachHang;
 		SDT = sDT;
 		DiaChi = diaChi;
 	}
-	public int getMaKhachHang() {
+	public String getMaKhachHang() {
 		return MaKhachHang;
 	}
-	public void setMaKhachHang(int maKhachHang) {
+	public void setMaKhachHang(String maKhachHang) {
 		MaKhachHang = maKhachHang;
 	}
 	public String getTenKhachHang() {

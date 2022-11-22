@@ -1,21 +1,21 @@
 package OP;
 
 public class NhaCungCap {
-	int MaCC;
+	String MaCC;
 	String TenCC;
 	String SDT;
 	String DiaChi;
-	public NhaCungCap(int maCC, String tenCC, String sDT, String diaChi) {
+	public NhaCungCap(String maCC, String tenCC, String sDT, String diaChi) {
 		super();
 		MaCC = maCC;
 		TenCC = tenCC;
 		SDT = sDT;
 		DiaChi = diaChi;
 	}
-	public int getMaCC() {
+	public String getMaCC() {
 		return MaCC;
 	}
-	public void setMaCC(int maCC) {
+	public void setMaCC(String maCC) {
 		MaCC = maCC;
 	}
 	public String getTenCC() {

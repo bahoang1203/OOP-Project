@@ -1,17 +1,17 @@
 package OP;
 
 public class LoaiHang {
-	int MaLoaiHang;
+	String MaLoaiHang;
 	String TenLoaiHang;
-	public LoaiHang(int maLoaiHang, String tenLoaiHang) {
+	public LoaiHang(String maLoaiHang, String tenLoaiHang) {
 		super();
 		MaLoaiHang = maLoaiHang;
 		TenLoaiHang = tenLoaiHang;
 	}
-	public int getMaLoaiHang() {
+	public String getMaLoaiHang() {
 		return MaLoaiHang;
 	}
-	public void setMaLoaiHang(int maLoaiHang) {
+	public void setMaLoaiHang(String maLoaiHang) {
 		MaLoaiHang = maLoaiHang;
 	}
 	public String getTenLoaiHang() {

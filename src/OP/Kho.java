@@ -1,18 +1,18 @@
 package OP;
 
 public class Kho {
-	int MaKho;
+	String MaKho;
 	String TenKho;
 	
-	public Kho(int maKho, String tenKho) {
+	public Kho(String maKho, String tenKho) {
 		super();
 		MaKho = maKho;
 		TenKho = tenKho;
 	}
-	public int getMaKho() {
+	public String getMaKho() {
 		return MaKho;
 	}
-	public void setMaKho(int maKho) {
+	public void setMaKho(String maKho) {
 		MaKho = maKho;
 	}
 	public String getTenKho() {
