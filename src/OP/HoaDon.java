@@ -7,13 +7,16 @@ public class HoaDon {
 	String NgayLap;
 	float ThanhTien;	 
 	
-	public HoaDon(String maNV, String maHoaDon, String maKhachHang, String ngayLap, float thanhTien) {
+	public HoaDon(String maHoaDon, String maNV, String maKhachHang, String ngayLap, float thanhTien) {
 		super();
 		MaNV = maNV;
 		MaHoaDon = maHoaDon;
 		MaKhachHang = maKhachHang;
 		NgayLap = ngayLap;
 		ThanhTien = thanhTien;
+	}
+	public HoaDon() {
+		
 	}
 	public String getMaNV() {
 		return MaNV;
@@ -46,4 +49,16 @@ public class HoaDon {
 		ThanhTien = thanhTien;
 	}
 	
+	@Override
+    public String toString() {
+        return MaHoaDon+";"+MaNV+";"+MaKhachHang+";"+NgayLap+";"+ThanhTien;
+    }
+	
+	public void xuat() {
+		System.out.println("Mã hóa đơn: "+getMaHoaDon()
+		+"\t Mã nhân viên: "+getMaNV()
+		+"\t Mã khách hàng: "+getMaKhachHang()
+		+"\t Ngày lập: "+getNgayLap()
+		+"\t Thành tiền: "+getThanhTien());
+	}
 }

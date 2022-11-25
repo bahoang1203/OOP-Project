@@ -10,7 +10,7 @@ import ChucNang.ChucNang;
 import OP.Kho;
 
 public class QuanLyKho implements ChucNang {
-    private String fileName = "khoData.txt";
+    private String fileName = "file/khoData.txt";
     private Kho[] khoList = Main.getKhoList();
     QuanLyKho() {
         doc();

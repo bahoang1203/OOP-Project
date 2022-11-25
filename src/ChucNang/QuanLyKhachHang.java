@@ -10,7 +10,7 @@ import java.util.Scanner;
 import OP.KhachHang;
 public class QuanLyKhachHang implements ChucNang{
 	Scanner sc = new Scanner(System.in);
-	private String fileName="khachhangData.txt";
+	private String fileName="file/khachhangData.txt";
 	private KhachHang[] listkh = Main.getListkh();
 	QuanLyKhachHang(){
 		doc();

@@ -14,6 +14,9 @@ public class Main {
     private static QuanLyKho QLK;
     private static QuanLyKhachHang CNKH;
     private static QuanLyPhieuNhap QLPN;
+    private static QuanLyLoaiHang QLLH;
+    private static QuanLyHangHoa QLHH;
+    
     public static void main(String[] args) {
         sc = new Scanner(System.in);
         khoList = null;
@@ -30,8 +33,11 @@ public class Main {
         System.out.println("|1. Quan ly kho            |\n"
                          + "|2. Quan ly phieu nhap     |\n"
                          + "|3. Quan ly khach hang     |\n"
-                         + "|4.                        |\n"
-                         + "|5. Thoat                  |\n"
+                         + "|4. Quan ly loai hang      |\n"
+                         + "|5. Quan ly hang hoa	   |\n"
+                         + "|6. Quan ly nhan vien      |\n"
+                         + "|7. Mua hang		       |\n"
+                         + "|8. Thoat                  |\n"
                          + "+--------------------------+");
         System.out.print("--> Moi ban chon: ");
         int c = Integer.parseInt(sc.nextLine());
@@ -48,6 +54,14 @@ public class Main {
             	CNKH = new QuanLyKhachHang();
             	CNKH.menu();
             }
+            case 4 ->{
+            	QLLH = new QuanLyLoaiHang();
+            	QLLH.menu();
+            	}
+            case 5 ->{
+            	QLHH = new QuanLyHangHoa();
+            	QLHH.menu();
+            	}
             default -> flag = false;
         }
         if (flag == true) {

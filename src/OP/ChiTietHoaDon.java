@@ -6,6 +6,7 @@ public class ChiTietHoaDon {
 	String MaHang;
 	float Tien;
 	int SoLuong;
+
 	public String getMaHoaDon() {
 		return MaHoaDon;
 	}
@@ -36,12 +37,23 @@ public class ChiTietHoaDon {
 	public void setSoLuong(int soLuong) {
 		SoLuong = soLuong;
 	}
-	public ChiTietHoaDon(String maHoaDon, String maChiTiet, String maHang, float tien, int soLuong) {
+	public ChiTietHoaDon(String maChiTiet, String maHoaDon, String maHang, int soLuong, float tien) {
 		super();
 		MaHoaDon = maHoaDon;
 		MaChiTiet = maChiTiet;
 		MaHang = maHang;
 		Tien = tien;
 		SoLuong = soLuong;
+	}
+	public ChiTietHoaDon() {
+		
+	}
+
+	public void xuat() {
+		System.out.println("Mã chi tiết hóa đơn: "+getMaChiTiet()
+		+"\tMã hóa đơn:"+getMaHoaDon()
+		+"\tMã hàng: "+getMaHang()
+		+"\tSố lượng: "+getSoLuong()
+		+"\tTổng tiền: "+getTien());
 	}
 }

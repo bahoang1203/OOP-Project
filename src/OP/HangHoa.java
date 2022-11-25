@@ -38,5 +38,4 @@ public class HangHoa {
 		Gia = gia;
 	}
 	
-	
 }

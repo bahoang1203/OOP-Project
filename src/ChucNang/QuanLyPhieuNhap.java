@@ -10,7 +10,7 @@ import ChucNang.ChucNang;
 import OP.PhieuNhap;
 
 public class QuanLyPhieuNhap implements ChucNang{
-    private String fileName = "phieuNhapData.txt";
+    private String fileName = "file/phieuNhapData.txt";
     private PhieuNhap[] phieuNhapList = Main.getPhieuNhapList();
     QuanLyPhieuNhap() {
         doc();
