@@ -9,6 +9,7 @@ import OP.KhachHang;
 import OP.Kho;
 import OP.PhieuNhap;
 import OP.LoaiHang;
+import OP.NhaCungCap;
 
 public class Main {
     public static Scanner sc;
@@ -19,12 +20,15 @@ public class Main {
     private static LoaiHang[] listlh;
     private static HoaDon[] listhd;
     private static ChiTietHoaDon[] listcthd;
+    private static NhaCungCap[] listncc;
+    
     private static QuanLyKho QLK;
     private static QuanLyKhachHang CNKH;
     private static QuanLyPhieuNhap QLPN;
     private static QuanLyLoaiHang QLLH;
     private static QuanLyHangHoa QLHH;
     private static QuanLyHoaDon QLHD;
+    private static QuanLyNhaCungCap QLNCC;
     
     public static void main(String[] args) {
         sc = new Scanner(System.in);
@@ -32,7 +36,6 @@ public class Main {
         QLPN = null;
         listhh = null;
         listlh = null;
-        listhd = null;
         listhd = null;
         listcthd = null;
         mainMenu();
@@ -46,12 +49,13 @@ public class Main {
         System.out.println("|1. Quan ly kho            |\n"
                          + "|2. Quan ly phieu nhap     |\n"
                          + "|3. Quan ly khach hang     |\n"
-                         + "|4. Quan ly loai hang      |\n"
-                         + "|5. Quan ly hang hoa	   |\n"
-                         + "|6. Quan ly nhan vien      |\n"
-                         + "|7. Quan ly hoa don        |\n"
+                         + "|4. Quan ly nha cung cap   |\n"
+                         + "|5. Quan ly loai hang      |\n"
+                         + "|6. Quan ly hang hoa	   |\n"
+                         + "|7. Quan ly nhan vien      |\n"
+                         + "|8. Quan ly hoa don        |\n"
                          + "|   va mua hang            |\n"
-                         + "|8. Thoat                  |\n"
+                         + "|9. Thoat                  |\n"
                          + "+--------------------------+");
         System.out.print("--> Moi ban chon: ");
         int c = Integer.parseInt(sc.nextLine());
@@ -69,18 +73,22 @@ public class Main {
             	CNKH.menu();
             }
             case 4 ->{
+            	QLNCC = new QuanLyNhaCungCap();
+            	QLNCC.menu();
+            }
+            case 5 ->{
             	QLLH = new QuanLyLoaiHang();
             	QLLH.menu();
             	}
-            case 5 ->{
+            case 6 ->{
             	QLLH = new QuanLyLoaiHang();
                 QLLH.doc();
             	QLHH = new QuanLyHangHoa();
             	QLHH.menu();
             	}
-            case 6->{
-            	}
             case 7->{
+            	}
+            case 8->{
             	QLHH = new QuanLyHangHoa();
             	QLHH.doc();
             	QLLH = new QuanLyLoaiHang();
@@ -150,6 +158,14 @@ public class Main {
     public static ChiTietHoaDon[] getListcthd() {
     	return listcthd;
     }
+
+	public static NhaCungCap[] getListncc() {
+		return listncc;
+	}
+
+	public static void setListncc(NhaCungCap[] listncc) {
+		Main.listncc = listncc;
+	}
    
     
 }

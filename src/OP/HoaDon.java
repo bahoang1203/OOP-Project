@@ -55,10 +55,6 @@ public class HoaDon {
     }
 	
 	public void xuat() {
-		System.out.println("Mã hóa đơn: "+getMaHoaDon()
-		+"\t Mã nhân viên: "+getMaNV()
-		+"\t Mã khách hàng: "+getMaKhachHang()
-		+"\t Ngày lập: "+getNgayLap()
-		+"\t Thành tiền: "+getThanhTien());
+		System.out.println(String.format("|%-5s|%-5s|%-5s|%-15s|%-15f|",getMaNV(),getMaHoaDon(),getMaKhachHang(),getNgayLap(),getThanhTien()));
 	}
 }

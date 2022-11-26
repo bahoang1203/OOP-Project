@@ -27,13 +27,13 @@ public class QuanLyKho implements ChucNang {
             System.out.println("+--------------------+\n"
                              + "|MENU                |\n"
                              + "+--------------------+");
-            System.out.println("|1. Them 1 phan tu   |\n"
-                             + "|2. Xoa 1 phan tu    |\n"
-                             + "|3. Sua 1 phan tu    |\n"
-                             + "|4. Xuat danh sach   |\n"
-                             + "|5. Thoat QLK        |\n"
+            System.out.println("|1. Thêm kho         |\n"
+                             + "|2. Xóa 1 kho        |\n"
+                             + "|3. Sửa 1 kho        |\n"
+                             + "|4. Xuất danh sách   |\n"
+                             + "|5. Thoát QLK        |\n"
                              + "+--------------------+");
-            System.out.print("--> Moi ban chon: ");
+            System.out.print("-->Chọn chức năng: ");
             int chon = Integer.parseInt(Main.sc.nextLine());
             switch (chon) {
                 case 1 -> them();
@@ -54,13 +54,13 @@ public class QuanLyKho implements ChucNang {
     private boolean ktDuLieu(Kho newKho) {
         boolean flag = true;
         if (newKho.getTenKho().isEmpty()) {
-            System.out.println("*Ten kho khong duoc de trong*");
+            System.out.println("::Ten kho khong duoc de trong::");
             flag = false;
         }
         for (Kho kho : khoList) {
             if (kho.getMaKho().equalsIgnoreCase(newKho.getMaKho())) {
                 flag = false;
-                System.out.println("*Trung ma kho*");
+                System.out.println("::Trùng mã kho::");
                 break;
             }
         }
@@ -69,8 +69,8 @@ public class QuanLyKho implements ChucNang {
 
     @Override
 	public void nhap() {
-        System.out.println("Danh sach trong!!");
-        System.out.print("Ban muon them bao nhieu phan tu dau tien: ");
+        System.out.println("Danh sách đang trống!!");
+        System.out.print("-->Nhập số phần tử muốn thêm vào: ");
         int n = Integer.parseInt(Main.sc.nextLine());
         khoList = new Kho[n];
         for (int i = 0; i < khoList.length; i++) {
@@ -102,7 +102,7 @@ public class QuanLyKho implements ChucNang {
             khoList = Arrays.copyOf(khoList, khoList.length + 1);
             khoList[khoList.length - 1] = newKho;
         }
-        System.out.print("-->Ban co muon tiep tuc them 1 phan tu (y/n)? ");
+        System.out.print("**Bạn có muốn thêm tiếp (y/n)?");
         String c = Main.sc.nextLine();
         if (c.equalsIgnoreCase("y")) {
             them();
@@ -115,7 +115,7 @@ public class QuanLyKho implements ChucNang {
             int i;
             boolean flag = false;
             xuat();
-            System.out.print("-->Nhap ma kho can xoa: ");
+            System.out.print("-->Nhập mã kho muốn xóa: ");
             String s = Main.sc.nextLine();
             for (i = 0; i < khoList.length; i++) {
                 if (khoList[i].getMaKho().equalsIgnoreCase(s)) {
@@ -130,9 +130,9 @@ public class QuanLyKho implements ChucNang {
                 khoList = Arrays.copyOf(khoList, khoList.length - 1);
             }
             else {
-                System.out.println("*Ma kho khong ton tai*");
+                System.out.println("::Mã kho không tồn tại");
             }
-            System.out.print("-->Ban co muon tiep tuc xoa 1 phan tu (y/n)? ");
+            System.out.print("**Bạn có muốn xóa tiếp (y/n)? ");
             String c = Main.sc.nextLine();
             if (c.equalsIgnoreCase("y")) {
                 xoa();
@@ -147,7 +147,7 @@ public class QuanLyKho implements ChucNang {
             int i;
             boolean flag = false;
             xuat();
-            System.out.print("-->Nhap ma kho can xoa: ");
+            System.out.print("-->Nhập mã kho cần sửa: ");
             String s = Main.sc.nextLine();
             for (i = 0; i < khoList.length; i++) {
                 if (khoList[i].getMaKho().equalsIgnoreCase(s)) {
@@ -156,18 +156,18 @@ public class QuanLyKho implements ChucNang {
                 }
             }
             if (flag == true) {
-                System.out.print("Ten kho moi: ");
+                System.out.print("Tên kho mới: ");
                 khoList[i].setTenKho(Main.sc.nextLine());
             }
             else {
-                System.out.println("*Ma kho khong ton tai*");
+                System.out.println("::Mã kho không tồn tại*");
             }
-            System.out.print("-->Ban co muon tiep tuc sua (y/n)? ");
+            System.out.print("**Bạn có muốn sửa tiếp (y/n)? ");
             String c = Main.sc.nextLine();
             if (c.equalsIgnoreCase("y")) {
                 sua();
             }       
-
+            xuat();
         }
 	}
 

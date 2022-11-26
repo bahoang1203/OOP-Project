@@ -45,10 +45,7 @@ public class HangHoa {
 	}
 
 	public void xuat() {
-		System.out.println("Mã hàng hóa: "+getMaHang()
-		+"\tTên hàng hóa: "+getTenHang()
-		+"\tMã loại: "+getMaLoaiHang()
-		+"\tGiá tiền: "+getGia());
+		System.out.println(String.format("|%-5s|%-20s|%-15s|%-15s|",MaHang,TenHang,MaLoaiHang,Gia));
 	}
 	
 	public void themhh() {

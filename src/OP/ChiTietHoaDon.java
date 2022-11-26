@@ -55,10 +55,6 @@ public class ChiTietHoaDon {
 	}
 
 	public void xuat() {
-		System.out.println("Mã chi tiết hóa đơn: "+getMaChiTiet()
-		+"\tMã hóa đơn:"+getMaHoaDon()
-		+"\tMã hàng: "+getMaHang()
-		+"\tSố lượng: "+getSoLuong()
-		+"\tTổng tiền: "+getTien());
+		System.out.println(String.format("|%-6s|%-5s|%-5s|%-9d|%-15f|",getMaChiTiet(),getMaHoaDon(),getMaHang(),getSoLuong(),getTien()));
 	}
 }

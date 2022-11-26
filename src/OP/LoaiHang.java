@@ -43,8 +43,7 @@ public class LoaiHang {
 	}
 	
 	public void xuat() {
-		System.out.println("Mã loại hàng: "+getMaLoaiHang()
-		+"\tTên loại hàng: "+getTenLoaiHang());
+		System.out.println(String.format("|%-5s|%-20s|", MaLoaiHang, TenLoaiHang));
 	}
 	
 }

@@ -14,36 +14,35 @@ public class QuanLyLoaiHang implements ChucNang {
 	Scanner sc = new Scanner(System.in);
 
 	public void menu() {
+		System.out.println("+---------------------+");
+        System.out.println("| QUAN LY LOAI HANG   |");
+        System.out.println("+---------------------+");
 		boolean flag = true;
 		doc();
 		if (dslh==null) {
-			System.out.println("Danh sách trống, xin hãy nhập ít nhất 1 phần tử");
+			System.out.println("Danh sách đang trống");
 			nhap();
 			Main.setLoaiHang(dslh);
 		} else {
 			while(flag==true) {
-				System.out.println(
-						"\nChoose your answer:" + "\n1.Thêm loại hàng." + "\n2.Xóa loại hàng." + "\n3.Sửa loại hàng" + "\n4.Xuất danh sách loại hàng" + "\n5.Thoát");
+				System.out.println("+--------------------+\n" 
+						 		 + "|MENU                |\n" 
+						 		 + "+--------------------+");
+				System.out.println("|1. Thêm 1 Loại Hàng |\n" 
+						 		 + "|2. Xóa 1 Loại Hàng  |\n" 
+						 		 + "|3. Sửa 1 Loại Hàng  |\n"
+						 		 + "|4. Xuất danh sách   |\n"
+						 		 + "|5. Thoát QLHH       |\n"
+						 		 + "+--------------------+");
+				System.out.print("-->Chọn chức năng: ");
 				int chon = Integer.parseInt(sc.nextLine());
 				switch (chon) {
-				case 1:
-					them();
-					break;
-				case 2:
-					xoa();
-					break;
-				case 3:
-					sua();
-					break;
-				case 4:
-					xuat();
-					break;
-				case 5:
-					flag = false;
-					break;
-				default:
-					System.out.println("\nxin hãy chọn lại!");
-					break;
+				case 1: them(); break;
+				case 2: xoa(); break;
+				case 3: sua(); break;
+				case 4: xuat(); break;
+				case 5: flag = false; break;
+				default: System.out.println("\nxin hãy chọn lại!"); break;
 				}
 			}
 			
@@ -55,12 +54,12 @@ public class QuanLyLoaiHang implements ChucNang {
 	boolean check(LoaiHang lh) {
 		boolean flag = true;
 		if (lh.getMaLoaiHang().isEmpty() || lh.getTenLoaiHang().isEmpty()) {
-			System.out.println("Xin hãy nhập đầy đủ thông tin");
+			System.out.println("::Xin hãy nhập đủ thông tin::");
 			flag = false;
 		}
 		for (LoaiHang lhs: dslh) {
 			if (lhs.getMaLoaiHang().equalsIgnoreCase(lh.getMaLoaiHang())) {
-				System.out.println("Bị trùng mã hàng!");
+				System.out.println("::Bị trùng mã hàng!::");
 				flag = false;
 				break;
 			}
@@ -71,7 +70,7 @@ public class QuanLyLoaiHang implements ChucNang {
 	@Override
 	public void nhap() {
 		try {
-			System.out.println("Nhập số phần tử muốn thêm vào:");
+			System.out.println("-->Nhập số phần tử muốn thêm vào: ");
 			int n = Integer.parseInt(sc.nextLine());
 			dslh = new LoaiHang[n];
 			for(int i=0; i<dslh.length; i++) {
@@ -79,16 +78,22 @@ public class QuanLyLoaiHang implements ChucNang {
 				dslh[i].themlh();
 			}
 		} catch (Exception e) {
-			System.out.println("Xin hãy nhập lại");
+			System.out.println("::Xin hãy nhập lại::");
 			nhap();
 		}
 	}
 
 	@Override
 	public void xuat() {
+		System.out.println("+--------------------------+\n"
+						 + "|      DANH SACH KHO       |\n" 
+						 + "+--------------------------+\n"
+						 + "|MALH |    TENLOAIHANG     |\n"
+						 + "+-----+--------------------+");
 		for (LoaiHang lh : dslh) {
 			lh.xuat();
 		}
+		System.out.println("+-----+--------------------+");
 	}
 
 	@Override
@@ -100,16 +105,19 @@ public class QuanLyLoaiHang implements ChucNang {
 			dslh[dslh.length - 1] = listlh;
 		}
 		else{
-			System.out.println("xin hãy nhập lại!");
+			System.out.println("::Xin hãy nhập lại!::");
 			them();
 		}
+		System.out.println("**Bạn có muốn thêm tiếp (y/n)?");
+		String c = sc.nextLine();
+		if(c.equalsIgnoreCase("y")) them();;
 		xuat();
 	}
 
 	@Override
 	public void sua() {
 		xuat();
-		System.out.print("Nhập mã loại hàng cần sửa: ");
+		System.out.print("-->Nhập mã loại hàng cần sửa: ");
 		String maloai = sc.nextLine();
 		for (int i = 0; i < dslh.length; i++) {
 			if (dslh[i].getMaLoaiHang().equalsIgnoreCase(maloai)) {
@@ -117,6 +125,9 @@ public class QuanLyLoaiHang implements ChucNang {
 				dslh[i].setTenLoaiHang(sc.nextLine());
 			}
 		}
+		System.out.println("**Bạn có muốn sửa tiếp (y/n)?");
+		String c = sc.nextLine();
+		if(c.equalsIgnoreCase("y")) sua();
 		xuat();
 	}
 
@@ -124,7 +135,7 @@ public class QuanLyLoaiHang implements ChucNang {
 	public void xoa() {
 		int i,j;
 		xuat();
-		System.out.print("Nhập mã loại hàng cần xóa: ");
+		System.out.print("-->Nhập mã hàng hóa cần xóa: ");
 		String maloai = sc.nextLine();
 		for (i = 0; i < dslh.length; i++) {
 			if (dslh[i].getMaLoaiHang().equalsIgnoreCase(maloai)) {
@@ -134,6 +145,9 @@ public class QuanLyLoaiHang implements ChucNang {
 				dslh = Arrays.copyOf(dslh, dslh.length - 1);
 			}
 		}
+		System.out.println("**Bạn có muốn xóa tiếp (y/n)?");
+		String c = sc.nextLine();
+		if(c.equalsIgnoreCase("y")) xoa();
 		xuat();
 	}
 

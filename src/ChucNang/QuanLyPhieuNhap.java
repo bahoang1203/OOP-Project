@@ -14,12 +14,13 @@ public class QuanLyPhieuNhap implements ChucNang{
     private PhieuNhap[] phieuNhapList = Main.getPhieuNhapList();
     QuanLyPhieuNhap() {
         doc();
-        System.out.println("+---------------------+");
-        System.out.println("| QUAN LY PHIEU NHAP  |");
-        System.out.println("+---------------------+");
+        
     }
     public void menu() {
         boolean flag = true;
+        System.out.println("+---------------------+");
+        System.out.println("| QUAN LY PHIEU NHAP  |");
+        System.out.println("+---------------------+");
         if (phieuNhapList == null || phieuNhapList.length == 0) {
             nhap();
         }
@@ -27,13 +28,13 @@ public class QuanLyPhieuNhap implements ChucNang{
             System.out.println("+--------------------+\n"
                              + "|MENU                |\n"
                              + "+--------------------+");
-            System.out.println("|1. Them 1 phan tu   |\n"
-                             + "|2. Xoa 1 phan tu    |\n"
-                             + "|3. Sua 1 phan tu    |\n"
-                             + "|4. Xuat danh sach   |\n"
-                             + "|5. Thoat QLK        |\n"
-                             + "+--------------------+");
-            System.out.print("--> Moi ban chon: ");
+            System.out.println("|1. Thêm kho         |\n"
+		                     + "|2. Xóa 1 kho        |\n"
+		                     + "|3. Sửa 1 kho        |\n"
+		                     + "|4. Xuất danh sách   |\n"
+		                     + "|5. Thoát QLK        |\n"
+		                     + "+--------------------+");
+            System.out.print("-->Chọn chức năng: ");
             int chon = Integer.parseInt(Main.sc.nextLine());
             switch (chon) {
                 case 1 -> them();
@@ -58,13 +59,13 @@ public class QuanLyPhieuNhap implements ChucNang{
             || newPhieuNhap.getMaKho().isEmpty()
             || newPhieuNhap.getMaNV().isEmpty()
             || newPhieuNhap.getMaNCC().isEmpty()) {
-            System.out.println("*Khong de trong*");
+            System.out.println("::Khong de trong::");
             flag = false;
         }
         for (PhieuNhap phieuNhap : phieuNhapList) {
             if (phieuNhap.getMaPhieuNhap().equalsIgnoreCase(newPhieuNhap.getMaPhieuNhap())) {
                 flag = false;
-                System.out.println("*Trung ma kho*");
+                System.out.println("::Trùng mã phiếu nhập::");
                 break;
             }
         }
@@ -73,8 +74,8 @@ public class QuanLyPhieuNhap implements ChucNang{
 
     @Override
 	public void nhap() {
-        System.out.println("Danh sach trong!!");
-        System.out.print("Ban muon them bao nhieu phan tu dau tien: ");
+    	 System.out.println("Danh sách đang trống!!");
+         System.out.print("-->Nhập số phần tử muốn thêm vào: ");
         int n = Integer.parseInt(Main.sc.nextLine());
         phieuNhapList = new PhieuNhap[n];
         for (int i = 0; i < phieuNhapList.length; i++) {
@@ -105,7 +106,7 @@ public class QuanLyPhieuNhap implements ChucNang{
             phieuNhapList = Arrays.copyOf(phieuNhapList, phieuNhapList.length+1);
             phieuNhapList[phieuNhapList.length - 1] = newPhieuNhap;
         }
-        System.out.print("-->Ban co muon tiep tuc them 1 phan tu (y/n)? ");
+        System.out.print("**Bạn có muốn thêm tiếp (y/n)?");
         String c = Main.sc.nextLine();
         if (c.equalsIgnoreCase("y")) {
             them();
@@ -118,7 +119,7 @@ public class QuanLyPhieuNhap implements ChucNang{
             int i;
             boolean flag = false;
             xuat();
-            System.out.print("-->Nhap ma phieu nhap can xoa: ");
+            System.out.print("-->Nhập mã phiếu nhập muốn xóa: ");
             String s = Main.sc.nextLine();
             for (i = 0; i < phieuNhapList.length; i++) {
                 if (phieuNhapList[i].getMaKho().equalsIgnoreCase(s)) {
@@ -133,9 +134,9 @@ public class QuanLyPhieuNhap implements ChucNang{
                 phieuNhapList = Arrays.copyOf(phieuNhapList, phieuNhapList.length - 1);
             }
             else {
-                System.out.println("*Ma phieu nhap khong ton tai*");
+            	System.out.println("::Mã phiếu nhập không tồn tại");
             }
-            System.out.print("-->Ban co muon tiep tuc xoa 1 phan tu (y/n)? ");
+            System.out.print("**Bạn có muốn xóa tiếp (y/n)? ");
             String c = Main.sc.nextLine();
             if (c.equalsIgnoreCase("y")) {
                 xoa();
@@ -150,7 +151,7 @@ public class QuanLyPhieuNhap implements ChucNang{
             int i;
             boolean flag = false;
             xuat();
-            System.out.print("-->Nhap ma kho can xoa: ");
+            System.out.print("-->Nhập mã phiếu nhập cần sửa: ");
             String s = Main.sc.nextLine();
             for (i = 0; i < phieuNhapList.length; i++) {
                 if (phieuNhapList[i].getMaKho().equalsIgnoreCase(s)) {
@@ -171,9 +172,9 @@ public class QuanLyPhieuNhap implements ChucNang{
                 phieuNhapList[i].setSoLuong(Integer.parseInt(Main.sc.nextLine()));
             }
             else {
-                System.out.println("*Ma phieu nhap khong ton tai*");
+            	System.out.println("::Mã phiếu nhập không tồn tại*");
             }
-            System.out.print("-->Ban co muon tiep tuc sua (y/n)? ");
+            System.out.print("**Bạn có muốn sửa tiếp (y/n)? ");
             String c = Main.sc.nextLine();
             if (c.equalsIgnoreCase("y")) {
                 sua();

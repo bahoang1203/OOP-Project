@@ -27,9 +27,9 @@ public class QuanLyHoaDon extends ChucNangHoaDon {
 		loadhoadon();
 		boolean flag = true;
 		if (dshd == null) {
-			System.out.println("Danh sách trống, bạn có muốn mua 1 món hàng bất kỳ không?"
-					+"\n1.Có\t2.Không"
-					+"\n1.Yes\t2.No");
+			System.out.println("**Danh sách trống, bạn có muốn mua 1 món hàng bất kỳ không?"
+								+"\n1.Có\t2.Không"
+								+"\n1.Yes\t2.No");
 			int luachon = Integer.parseInt(sc.nextLine());
 			while(luachon<1 || luachon>2) {
 				System.out.println("Xin hãy chọn giữa 1 và 2");
@@ -43,8 +43,15 @@ public class QuanLyHoaDon extends ChucNangHoaDon {
 		}
 		else {
 			while (flag == true) {
-				System.out.println("\nChoose your answer:" + "\n1.Mua hàng." + "\n2.Xuất danh sách hóa đơn." + "\n3.Xem chi tiết hóa đơn"
-						+ "\n4.Thoát");
+				System.out.println("+-------------------------+\n" 
+								 + "|MENU                     |\n" 
+								 + "+-------------------------+");
+				System.out.println("|1.Mua hàng.              |\n" 
+								 + "|2.Xuất danh sách hóa đơn.|\n" 
+								 + "|3.Xem chi tiết hóa đơn   |\n"
+								 + "|4.Thoát                  |\n"
+								 + "+-------------------------+");
+				System.out.print("-->Chọn chức năng: ");
 				int chon = Integer.parseInt(sc.nextLine());
 				switch (chon) {
 				case 1:
@@ -61,7 +68,7 @@ public class QuanLyHoaDon extends ChucNangHoaDon {
 					flag = false;
 					break;
 				default:
-					System.out.println("\nxin hãy chọn lại!");
+					System.out.println("\nXin hãy chọn lại!");
 					break;
 				}
 			}
@@ -123,29 +130,39 @@ public class QuanLyHoaDon extends ChucNangHoaDon {
 	//danh sách hóa đơn
 	@Override
 	public void xuathd() {
-		System.out.println("Danh sách hóa đơn");
+		System.out.println("+-------------------------------------------------+\n"
+						 + "|              DANH SACH HOA DON                  |\n" 
+						 + "+-----+-----+-----+---------------+---------------+\n"
+						 + "|MANV |MAHD |MAKH |   NGAYLAP     |   THANHTIEN   |\n"
+						 + "+-----+-----+-----+---------------+---------------+");
 		for (HoaDon hd : dshd) {
 			hd.xuat();
 		}
+		System.out.println("+-------------------------------------------------+\n");
 	}
 	
 	//xem chi tiết hóa đơn
 	public void xemcthd(String mahd) {
-		System.out.println("Chi tiết hóa đơn");
+		System.out.println("+--------------------------------------------+\n"
+						 + "|         DANH SACH CHI TIET HOA DON         |\n" 
+						 + "+------+-----+-----+---------+---------------+\n"
+						 + "|MACTHD|MAHD |MAHD | SOLUONG |   THANHTIEN   |\n"
+						 + "+------+-----+-----+---------+---------------+");
 		for (ChiTietHoaDon cthd : dscthd) {
 			if(cthd.getMaHoaDon().equalsIgnoreCase(mahd)) {
 				cthd.xuat();
 			}
 		}
+		System.out.println("+--------------------------------------------+\n");
 	}
 	
 	//danh sách chi tiết hóa đơn
 	@Override
 	public void xuatcthd(){
-		System.out.println("----------------------------------------------");
+		System.out.println("---------------------------------------------------");
 		xuathd();
-		System.out.println("----------------------------------------------");
-		System.out.println("Hãy nhập mã hóa đơn muốn xem chi tiết");
+		System.out.println("---------------------------------------------------");
+		System.out.print("Hãy nhập mã hóa đơn muốn xem chi tiết: ");
 		String mahd = sc.nextLine().toUpperCase();
 		xemcthd(mahd);
 	}
@@ -166,10 +183,10 @@ public class QuanLyHoaDon extends ChucNangHoaDon {
 		String ngay = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 		listhd.setNgayLap(ngay);
 
-		System.out.println("Nhập mã nhân viên đang thực hiện thanh toán:");
+		System.out.print("Nhập mã nhân viên đang thực hiện thanh toán: ");
 		String manv = sc.nextLine();
 		listhd.setMaNV(manv);
-		System.out.println("Nhập mã khách hàng:");
+		System.out.print("Nhập mã khách hàng: ");
 		String makh = sc.nextLine();
 		listhd.setMaKhachHang(makh);
 		float tongtien=0;
@@ -179,9 +196,9 @@ public class QuanLyHoaDon extends ChucNangHoaDon {
 			if(flag == true){
 				ChiTietHoaDon listcthd = new ChiTietHoaDon();
 				String macthd = "CTHD"+m;
-				System.out.println("Nhập mã hàng của món hàng muốn mua:");
+				System.out.print("Nhập mã hàng của món hàng muốn mua: ");
 				String mahang = sc.nextLine();	
-				System.out.println("Nhập số lượng:");
+				System.out.print("Nhập số lượng: ");
 				int soluong = Integer.parseInt(sc.nextLine());
 				float tien = tinhtien(soluong, qlhh.timgiatien(mahang));
 				
@@ -196,7 +213,7 @@ public class QuanLyHoaDon extends ChucNangHoaDon {
 						break;
 					}
 					else {
-						System.out.println("Số lượng hàng không đủ, xin hãy giảm số lượng cần mua xuống!");
+						System.out.println("::Số lượng hàng không đủ, xin hãy giảm số lượng cần mua xuống!::");
 						System.out.println("Nhập lại số lượng:");
 						soluong = Integer.parseInt(sc.nextLine());
 					}
@@ -209,11 +226,11 @@ public class QuanLyHoaDon extends ChucNangHoaDon {
 				dscthd[dscthd.length - 1] = listcthd;
 				
 				tongtien+=tien;
-				System.out.println("bạn muốn mua thêm món hàng nào khác không?");
+				System.out.println("**Bạn muốn mua thêm món hàng nào khác không?");
 				System.out.println("1.Có\t2.không"+"\n1.Yes\t2.No");
 				int choice = Integer.parseInt(sc.nextLine());
 				while(choice<1 || choice >2){
-					System.out.println("mời chọn lại giữa 1 và 2:");
+					System.out.println("Mời chọn lại giữa 1 và 2:");
 					choice = Integer.parseInt(sc.nextLine());
 				}
 				if(choice == 1){

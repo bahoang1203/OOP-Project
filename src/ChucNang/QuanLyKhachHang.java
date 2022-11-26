@@ -27,13 +27,13 @@ public class QuanLyKhachHang implements ChucNang{
             System.out.println("+--------------------+\n"
                              + "|MENU                |\n"
                              + "+--------------------+");
-            System.out.println("|1. Them 1 phan tu   |\n"
-                             + "|2. Xoa 1 phan tu    |\n"
-                             + "|3. Sua 1 phan tu    |\n"
-                             + "|4. Xuat danh sach   |\n"
-                             + "|5. Thoat QLKH       |\n"
+            System.out.println("|1. Thêm 1 khách hàng|\n"
+                             + "|2. Xóa 1 khách hàng |\n"
+                             + "|3. Sửa 1 khách hàng |\n"
+                             + "|4. Xuất danh sách   |\n"
+                             + "|5. Thoát QLKH       |\n"
                              + "+--------------------+");
-            System.out.print("--> Moi ban chon: ");
+            System.out.print("-->Chọn chức năng: ");
             int chon = Integer.parseInt(sc.nextLine());
             switch (chon) {
                 case 1 -> them();
@@ -153,7 +153,7 @@ public class QuanLyKhachHang implements ChucNang{
 			}
 			if(flag==true) {
 				for(int j = i;j<listkh.length-1;j++) {
-					listkh[j]=listkh[i+1];
+					listkh[j]=listkh[j+1];
 				}
 				listkh = Arrays.copyOf(listkh, listkh.length-1);
 			}else {

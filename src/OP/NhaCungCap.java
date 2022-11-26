@@ -1,6 +1,9 @@
 package OP;
 
+import java.util.Scanner;
+
 public class NhaCungCap {
+	Scanner sc = new Scanner(System.in);
 	String MaCC;
 	String TenCC;
 	String SDT;
@@ -11,6 +14,9 @@ public class NhaCungCap {
 		TenCC = tenCC;
 		SDT = sDT;
 		DiaChi = diaChi;
+	}
+	public NhaCungCap() {
+		// TODO Auto-generated constructor stub
 	}
 	public String getMaCC() {
 		return MaCC;
@@ -35,5 +41,21 @@ public class NhaCungCap {
 	}
 	public void setDiaChi(String diaChi) {
 		DiaChi = diaChi;
+	}
+	public String toString() {
+		return MaCC+";"+TenCC+";"+SDT+";"+DiaChi;
+	}
+	public void nhapTT() {
+		System.out.print("Nhap ma nha cung cap: ");
+		setMaCC(sc.nextLine());
+		System.out.print("Nhap ten nha cung cap: ");
+		setTenCC(sc.nextLine());
+		System.out.print("Nhap SDT: ");
+		setSDT(sc.nextLine());
+		System.out.print("Nhap DiaChi: ");
+		setDiaChi(sc.nextLine());
+	}
+	public void xuatTT() {
+		System.out.println(String.format("|%-5s|%-20s|%-15s|%-15s|",MaCC,TenCC,SDT,DiaChi));
 	}
 }
