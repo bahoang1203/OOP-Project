@@ -10,23 +10,59 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 import OP.ChiTietHoaDon;
+import OP.HangHoa;
 import OP.HoaDon;
 
 public class QuanLyHoaDon extends ChucNangHoaDon {
-	int sohd;
-	int socthd;
-	private static HoaDon dshd[];
-	private static ChiTietHoaDon dscthd[];
+	private HoaDon[] dshd = Main.getListhd();
+	private ChiTietHoaDon[] dscthd = Main.getListcthd();
 	Scanner sc = new Scanner(System.in);
 	
+	public void menu() {
+		loadchitiethoadon();
+		loadhoadon();
+		boolean flag = true;
+		if (dshd == null) {
+			System.out.println("Danh sách trống, xin hãy mua 1 món hàng bất kỳ");
+			muahang();
+			Main.setListhd(dshd);
+			Main.setListcthd(dscthd);
+		}
+		while (flag == true) {
+			System.out.println("\nChoose your answer:" + "\n1.Mua hàng." + "\n2.Xuất danh sách hóa đơn." + "\n3.Xem chi tiết hóa đơn"
+					+ "\n4.Thoát");
+			int chon = Integer.parseInt(sc.nextLine());
+			switch (chon) {
+			case 1:
+				
+				break;
+			case 2:
+				
+				break;
+			case 3:
+				
+				break;
+			case 4:
+				flag = false;
+				break;
+			default:
+				System.out.println("\nxin hãy chọn lại!");
+				break;
+			}
+			
+		}
+		Main.setListhd(dshd);
+		Main.setListcthd(dscthd);
+		ghihd();
+	}
+	
+	@Override
 	public void loadhoadon() {
 		try {
-			// đọc file
 			FileReader fr = new FileReader("file/hoadon.txt");
 			BufferedReader br = new BufferedReader(fr);
-			var n = br.readLine();
-			sohd = Integer.parseInt(n);
-			dshd = new HoaDon[sohd];
+			int n = Integer.parseInt(br.readLine());
+			dshd = new HoaDon[n];
 			String str;
 			for (int i = 0; i < dshd.length; i++) {
 				str = br.readLine();
@@ -34,50 +70,41 @@ public class QuanLyHoaDon extends ChucNangHoaDon {
 					break;
 				}
 				var tmp = str.split(";");
-				dshd[i] = new HoaDon();
-				dshd[i].setMaHoaDon(tmp[0]);
-				dshd[i].setMaNV((tmp[1]));
-				dshd[i].setMaKhachHang(tmp[2]);
-				dshd[i].setNgayLap(tmp[3]);
-				dshd[i].setThanhTien(Float.parseFloat(tmp[4]));
+				dshd[i] = new HoaDon(tmp[0], tmp[1], tmp[2], tmp[3],Float.parseFloat(tmp[4]));
 			}
-			xuatdshoadon();
 			br.close();
 			fr.close();
 		} catch (Exception e) {
+
 		}
 	}
-
+	
+	@Override
 	public void loadchitiethoadon() {
 		try {
-			// đọc file
 			FileReader fr = new FileReader("file/chitiethoadon.txt");
 			BufferedReader br = new BufferedReader(fr);
-			var n = br.readLine();
-			socthd = Integer.parseInt(n);
-			dscthd = new ChiTietHoaDon[socthd];
+			int n = Integer.parseInt(br.readLine());
+			dscthd = new ChiTietHoaDon[n];
 			String str;
-			for(int i = 0; i < dscthd.length; i++){
+			for (int i = 0; i < dscthd.length; i++) {
 				str = br.readLine();
-				if(str == null){
+				if (str == null) {
 					break;
 				}
 				var tmp = str.split(";");
-				dscthd[i] = new ChiTietHoaDon();			
-				dscthd[i].setMaChiTiet(tmp[0]);
-				dscthd[i].setMaHoaDon(tmp[1]);
-				dscthd[i].setMaHang(tmp[2]);
-				dscthd[i].setSoLuong(Integer.parseInt(tmp[3]));
-				dscthd[i].setTien(Float.parseFloat(tmp[4]));
+				dscthd[i] = new ChiTietHoaDon(tmp[0], tmp[1], tmp[2], Integer.parseInt(tmp[3]),Float.parseFloat(tmp[4]));
 			}
 			br.close();
 			fr.close();
 		} catch (Exception e) {
+
 		}
 	}
 
 	//danh sách hóa đơn
-	public void xuatdshoadon() {
+	@Override
+	public void xuathd() {
 		System.out.println("Danh sách hóa đơn");
 		for (HoaDon hd : dshd) {
 			hd.xuat();
@@ -85,7 +112,8 @@ public class QuanLyHoaDon extends ChucNangHoaDon {
 	}
 
 	//danh sách chi tiết hóa đơn
-	public void xuatdschitiethoadon(String mahd) {
+	@Override
+	public void xuatcthd(String mahd){
 		System.out.println("Chi tiết hóa đơn");
 		for (ChiTietHoaDon cthd : dscthd) {
 			if(cthd.getMaHoaDon()==mahd) {
@@ -94,18 +122,17 @@ public class QuanLyHoaDon extends ChucNangHoaDon {
 		}
 	}
 	
+	@Override
 	public void muahang() {
-		ChiTietHoaDon cthd = new ChiTietHoaDon();
-		int n = sohd;
-		int m = socthd;
-		dshd[n+1] = new HoaDon();
-		dscthd[m+1] = new ChiTietHoaDon();
+		ChiTietHoaDon listcthd = new ChiTietHoaDon();
+		int n = dshd.length+1;
+		int m = dscthd.length+1;
+		dshd[n] = new HoaDon();
+		dscthd[m] = new ChiTietHoaDon();
 
 		//tự động set
 		String mahd = "HD"+n;
 		dshd[n].setMaHoaDon(mahd);
-		String matchd = "CTHD"+m;
-		dscthd[m].setMaHoaDon(matchd);
 		DateFormat dtf = new SimpleDateFormat("dd/mm/yyyy");
 		String ngay = dtf.format(LocalDate.now());
 		dshd[n].setNgayLap(ngay);
@@ -120,6 +147,8 @@ public class QuanLyHoaDon extends ChucNangHoaDon {
 		boolean flag = true;
 		for(;;){
 			if(flag == true){
+				String matchd = "CTHD"+m;
+				dscthd[m].setMaHoaDon(matchd);
 				dscthd[m].setMaHoaDon(mahd);
 				System.out.println("Nhập mã hàng của món hàng muốn mua:");
 				dscthd[m].setMaHang(sc.nextLine());
@@ -144,26 +173,12 @@ public class QuanLyHoaDon extends ChucNangHoaDon {
 			}
 				
 		}
-		try {
-			FileWriter fw = new FileWriter("file/hoadon.txt");
-			BufferedWriter bw = new BufferedWriter(fw);
-			bw.write(sohd+"");
-			bw.newLine();
-			
-			bw.close();
-			fw.close();
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-
+		ghicthd();
+		ghihd();
 	}
-
-	public void ghi() {
-		dshd = new HoaDon[2];
-		dshd[0] = new HoaDon("HD1", "NV1", "KH1", "24/11/2022", 40000f);
-		dshd[1] = new HoaDon("HD2", "NV1", "KH1", "24/11/2022", 40000f);
-
-		// ghi file
+	
+	@Override
+	public void ghihd() {
 		try {
 			FileWriter fw = new FileWriter("file/hoadon.txt");
 			BufferedWriter bw = new BufferedWriter(fw);
@@ -180,10 +195,23 @@ public class QuanLyHoaDon extends ChucNangHoaDon {
 		}
 	}
 
-	public static void main(String[] args) {
-		QuanLyHoaDon qlhd = new QuanLyHoaDon();
-		qlhd.loadhoadon();
-		qlhd.loadchitiethoadon();
+	@Override
+	public void ghicthd() {
+		try {
+			FileWriter fw = new FileWriter("file/chitiethoadon.txt");
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(dscthd.length + "");
+			bw.newLine();
+			for (ChiTietHoaDon cthd : dscthd) {
+				bw.write(cthd.toString());
+				bw.newLine();
+			}
+			bw.close();
+			fw.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
 	}
-
+	
 }

@@ -1,10 +1,10 @@
 package OP;
 
 public class HoaDon {
-	String MaNV;
-	String MaHoaDon;
-	String MaKhachHang;
-	String NgayLap;
+	private String MaNV;
+	private String MaHoaDon;
+	private String MaKhachHang;
+	private String NgayLap;
 	float ThanhTien;	 
 	
 	public HoaDon(String maHoaDon, String maNV, String maKhachHang, String ngayLap, float thanhTien) {

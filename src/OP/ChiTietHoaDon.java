@@ -1,11 +1,11 @@
 package OP;
 
 public class ChiTietHoaDon {
-	String MaHoaDon;
-	String MaChiTiet;
-	String MaHang;
-	float Tien;
-	int SoLuong;
+	private String MaHoaDon;
+	private String MaChiTiet;
+	private String MaHang;
+	private float Tien;
+	private int SoLuong;
 
 	public String getMaHoaDon() {
 		return MaHoaDon;
@@ -47,6 +47,11 @@ public class ChiTietHoaDon {
 	}
 	public ChiTietHoaDon() {
 		
+	}
+	
+	@Override
+	public String toString() {
+		return MaChiTiet + ";" + MaHoaDon + ";" + MaHang + ";" + SoLuong + ";" + Tien; 
 	}
 
 	public void xuat() {

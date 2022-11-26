@@ -10,19 +10,20 @@ import java.util.Scanner;
 import OP.LoaiHang;
 
 public class QuanLyLoaiHang implements ChucNang {
-	private static LoaiHang dslh[];
-	int solh;
+	public LoaiHang dslh[] = Main.getListlh();
 	Scanner sc = new Scanner(System.in);
 
 	public void menu() {
 		boolean flag = true;
 		doc();
-		if (dslh.length == 0 || dslh==null) {
+		if (dslh==null) {
+			System.out.println("Danh sách trống, xin hãy nhập ít nhất 1 phần tử");
 			nhap();
+			Main.setLoaiHang(dslh);
 		} else {
 			while(flag==true) {
 				System.out.println(
-						"Choose your answer:" + "\n1.Thêm loại hàng." + "\n2.Xóa loại hàng." + "\n3.Sửa loại hàng" + "\n4.Xuất danh sách loại hàng" + "\n5.Thoát");
+						"\nChoose your answer:" + "\n1.Thêm loại hàng." + "\n2.Xóa loại hàng." + "\n3.Sửa loại hàng" + "\n4.Xuất danh sách loại hàng" + "\n5.Thoát");
 				int chon = Integer.parseInt(sc.nextLine());
 				switch (chon) {
 				case 1:
@@ -41,14 +42,32 @@ public class QuanLyLoaiHang implements ChucNang {
 					flag = false;
 					break;
 				default:
-					System.out.println("xin hãy chọn lại!");
+					System.out.println("\nxin hãy chọn lại!");
 					break;
 				}
 			}
-			ghi();
+			
 		}
+		Main.setLoaiHang(dslh);
+		ghi();
 	}
-
+	
+	boolean check(LoaiHang lh) {
+		boolean flag = true;
+		if (lh.getMaLoaiHang().isEmpty() || lh.getTenLoaiHang().isEmpty()) {
+			System.out.println("Xin hãy nhập đầy đủ thông tin");
+			flag = false;
+		}
+		for (LoaiHang lhs: dslh) {
+			if (lhs.getMaLoaiHang().equalsIgnoreCase(lh.getMaLoaiHang())) {
+				System.out.println("Bị trùng mã hàng!");
+				flag = false;
+				break;
+			}
+		}
+		return flag;
+	}
+	
 	@Override
 	public void nhap() {
 		try {
@@ -60,7 +79,7 @@ public class QuanLyLoaiHang implements ChucNang {
 				dslh[i].themlh();
 			}
 		} catch (Exception e) {
-			System.out.println("Xin hãy nhập SỐ! làm ơn!");
+			System.out.println("Xin hãy nhập lại");
 			nhap();
 		}
 	}
@@ -72,31 +91,27 @@ public class QuanLyLoaiHang implements ChucNang {
 		}
 	}
 
-	boolean checknhap(String maloai) {
-		for (LoaiHang lh : dslh) {
-			if (lh.getMaLoaiHang() == maloai) {
-				return false;
-			}
-		}
-		return true;
-	}
-
 	@Override
 	public void them() {
 		LoaiHang listlh = new LoaiHang();
 		listlh.themlh();
-		dslh = Arrays.copyOf(dslh, dslh.length + 1);
-		dslh[dslh.length - 1] = listlh;
+		if(check(listlh)){
+			dslh = Arrays.copyOf(dslh, dslh.length + 1);
+			dslh[dslh.length - 1] = listlh;
+		}
+		else{
+			System.out.println("xin hãy nhập lại!");
+			them();
+		}
 		xuat();
 	}
 
 	@Override
 	public void sua() {
-		int i;
 		xuat();
 		System.out.print("Nhập mã loại hàng cần sửa: ");
 		String maloai = sc.nextLine();
-		for (i = 0; i < dslh.length; i++) {
+		for (int i = 0; i < dslh.length; i++) {
 			if (dslh[i].getMaLoaiHang().equalsIgnoreCase(maloai)) {
 				System.out.print("Tên loại hàng mới: ");
 				dslh[i].setTenLoaiHang(sc.nextLine());
@@ -107,13 +122,13 @@ public class QuanLyLoaiHang implements ChucNang {
 
 	@Override
 	public void xoa() {
-		int i;
+		int i,j;
 		xuat();
 		System.out.print("Nhập mã loại hàng cần xóa: ");
 		String maloai = sc.nextLine();
 		for (i = 0; i < dslh.length; i++) {
 			if (dslh[i].getMaLoaiHang().equalsIgnoreCase(maloai)) {
-				for (int j = i; j < dslh.length - 1; j++) {
+				for (j = i; j < dslh.length - 1; j++) {
 					dslh[j] = dslh[j + 1];
 				}
 				dslh = Arrays.copyOf(dslh, dslh.length - 1);
@@ -146,7 +161,7 @@ public class QuanLyLoaiHang implements ChucNang {
 			FileReader fr = new FileReader("file/loaihang.txt");
 			BufferedReader br = new BufferedReader(fr);
 			var n = br.readLine();
-			solh = Integer.parseInt(n);
+			int solh = Integer.parseInt(n);
 			dslh = new LoaiHang[solh];
 			String str;
 			for (int i = 0; i < dslh.length; i++) {
@@ -162,13 +177,7 @@ public class QuanLyLoaiHang implements ChucNang {
 			br.close();
 			fr.close();
 		} catch (Exception e) {
-			System.out.println(e);
 		}
-	}
-
-	public static void main(String[] args) {
-		QuanLyLoaiHang lh = new QuanLyLoaiHang();
-		lh.menu();
 	}
 
 }

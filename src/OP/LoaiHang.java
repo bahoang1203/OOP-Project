@@ -15,6 +15,7 @@ public class LoaiHang {
 	public LoaiHang() {
 
 	}
+
 	public String getMaLoaiHang() {
 		return MaLoaiHang;
 	}
@@ -36,7 +37,7 @@ public class LoaiHang {
 	public void themlh() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Nhập mã loại:");
-		setMaLoaiHang(sc.nextLine());
+		setMaLoaiHang(sc.nextLine().toUpperCase());
 		System.out.println("Tên loại hàng:");
 		setTenLoaiHang(sc.nextLine());
 	}

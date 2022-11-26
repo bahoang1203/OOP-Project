@@ -192,7 +192,6 @@ public class QuanLyKho implements ChucNang {
 
 	@Override
 	public void doc() {
-		// TODO Auto-generated method stub
         try{
             FileReader fr = new FileReader(fileName);
             BufferedReader br = new BufferedReader(fr);

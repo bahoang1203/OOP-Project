@@ -1,4 +1,5 @@
-3
-LH1;Nước
-LH2;Bánh
+4
+LH1;Nuoc
+LH2;Banh
+LH3;Ruou
 LH4;Bia
