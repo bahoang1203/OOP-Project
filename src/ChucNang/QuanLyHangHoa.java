@@ -11,7 +11,7 @@ import OP.HangHoa;
 import OP.LoaiHang;
 
 public class QuanLyHangHoa implements ChucNang {
-	private static HangHoa[] dshh = Main.getListhh();
+	public HangHoa[] dshh = Main.getListhh();
 	Scanner sc = new Scanner(System.in);
 	QuanLyLoaiHang qllh = new QuanLyLoaiHang();
 
@@ -23,31 +23,32 @@ public class QuanLyHangHoa implements ChucNang {
 			nhap();
 			Main.setHangHoaList(dshh);
 		}
-		while (flag == true) {
-			System.out.println("\nChoose your answer:" + "\n1.Thêm hàng hóa." + "\n2.Xóa hàng hóa." + "\n3.Sửa hàng hóa"
-					+ "\n4.Xuất danh sách hàng hóa" + "\n5.Thoát");
-			int chon = Integer.parseInt(sc.nextLine());
-			switch (chon) {
-			case 1:
-				them();
-				break;
-			case 2:
-				xoa();
-				break;
-			case 3:
-				sua();
-				break;
-			case 4:
-				xuat();
-				break;
-			case 5:
-				flag = false;
-				break;
-			default:
-				System.out.println("\nxin hãy chọn lại!");
-				break;
+		else {
+			while (flag == true) {
+				System.out.println("\nChoose your answer:" + "\n1.Thêm hàng hóa." + "\n2.Xóa hàng hóa." + "\n3.Sửa hàng hóa"
+						+ "\n4.Xuất danh sách hàng hóa" + "\n5.Thoát");
+				int chon = Integer.parseInt(sc.nextLine());
+				switch (chon) {
+				case 1:
+					them();
+					break;
+				case 2:
+					xoa();
+					break;
+				case 3:
+					sua();
+					break;
+				case 4:
+					xuat();
+					break;
+				case 5:
+					flag = false;
+					break;
+				default:
+					System.out.println("\nxin hãy chọn lại!");
+					break;
+				}	
 			}
-			
 		}
 		Main.setHangHoaList(dshh);
 		ghi();
