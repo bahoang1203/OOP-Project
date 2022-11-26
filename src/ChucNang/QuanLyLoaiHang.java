@@ -174,6 +174,7 @@ public class QuanLyLoaiHang implements ChucNang {
 				dslh[i].setMaLoaiHang(tmp[0]);
 				dslh[i].setTenLoaiHang(tmp[1]);
 			}
+			Main.setLoaiHang(dslh);
 			br.close();
 			fr.close();
 		} catch (Exception e) {

@@ -2,6 +2,8 @@ package OP;
 
 import java.util.Scanner;
 
+import ChucNang.QuanLyLoaiHang;
+
 public class HangHoa {
 	private String MaHang;
 	private String TenHang;
@@ -55,6 +57,10 @@ public class HangHoa {
 		setMaHang(sc.nextLine().toUpperCase());
 		System.out.println("Tên hàng hóa:");
 		setTenHang(sc.nextLine());
+		QuanLyLoaiHang qlLoaiHang = new QuanLyLoaiHang();
+		System.out.println("--------------------------------------------");
+		qlLoaiHang.xuat();
+		System.out.println("--------------------------------------------");
 		System.out.println("Mã loại hàng:");
 		setMaLoaiHang(sc.nextLine().toUpperCase());
 		System.out.println("Giá tiền:");

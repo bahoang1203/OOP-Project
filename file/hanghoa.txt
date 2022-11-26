@@ -1,2 +1,4 @@
-1
+3
 HH1;Coca;LH1;10000.0
+HH2;brandy;LH3;500000.0
+HH3;Volka;LH3;800000.0

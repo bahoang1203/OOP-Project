@@ -70,14 +70,16 @@ public class QuanLyHangHoa implements ChucNang {
 		}
 		
 		if(qllh.dslh!=null) {
+			String ml = null;
 			for (LoaiHang lh : qllh.dslh) {
 				if (lh.getMaLoaiHang().equalsIgnoreCase(hh.getMaLoaiHang())) {
+					ml=lh.getMaLoaiHang();
 					break;
 				}
-				else {
-					System.out.println("Không có mã loại hàng này, xin hãy thêm vào hoặc nhập mã loại hàng khác!");
-					flag = false;
-				}
+			}
+			if(ml==null) {
+				System.out.println("Không có mã loại hàng này, xin hãy thêm vào hoặc nhập mã loại hàng khác!");
+				flag = false;
 			}
 		}	
 		return flag;
@@ -191,6 +193,7 @@ public class QuanLyHangHoa implements ChucNang {
 				var tmp = str.split(";");
 				dshh[i] = new HangHoa(tmp[0], tmp[1], tmp[2], Float.parseFloat(tmp[3]));
 			}
+			Main.setHangHoaList(dshh);
 			br.close();
 			fr.close();
 		} catch (Exception e) {
