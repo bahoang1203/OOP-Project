@@ -214,11 +214,29 @@ public class QuanLyPhieuNhap implements ChucNang{
                 if(sr==null)break;
                 var tmp =  sr.split(";");
                 phieuNhapList[i] = new PhieuNhap(tmp[0], tmp[1], tmp[2], tmp[3], tmp[4], Integer.parseInt(tmp[5]));
-            } 
+            }
+            Main.setPhieuNhapList(phieuNhapList);
             br.close();
             fr.close();
         }
         catch(Exception e){}
+	}
+	
+	boolean giamsoluong(int soluong, String mahang) {
+		boolean flag = false;
+		int dem = 0;
+		for(PhieuNhap pn: phieuNhapList) {
+			if(pn.getMaHang().equalsIgnoreCase(mahang) && pn.getSoLuong()>0) {
+				int giam = pn.getSoLuong() - soluong;
+				phieuNhapList[dem].setSoLuong(giam);
+				flag = true;
+				break;
+			}
+			dem++;
+		}
+		Main.setPhieuNhapList(phieuNhapList);
+		ghi();
+		return flag;
 	}
 
 }

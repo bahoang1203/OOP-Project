@@ -53,6 +53,15 @@ public class QuanLyHangHoa implements ChucNang {
 		Main.setHangHoaList(dshh);
 		ghi();
 	}
+	
+	public float timgiatien(String mahang) {
+		for(HangHoa hh: dshh) {
+			if(hh.getMaHang().equalsIgnoreCase(mahang)) {
+				return hh.getGia();
+			}
+		}
+		return 0;
+	}
 
 	boolean check(HangHoa hh) {
 		boolean flag = true;
@@ -112,7 +121,7 @@ public class QuanLyHangHoa implements ChucNang {
 	public void them() {
 		HangHoa listhh = new HangHoa();
 		listhh.themhh();
-		if(check(listhh)==true) {
+		if(check(listhh)) {
 			dshh = Arrays.copyOf(dshh, dshh.length + 1);
 			dshh[dshh.length - 1] = listhh;
 		}else {

@@ -81,7 +81,14 @@ public class Main {
             case 6->{
             	}
             case 7->{
+            	QLHH = new QuanLyHangHoa();
+            	QLHH.doc();
+            	QLLH = new QuanLyLoaiHang();
+                QLLH.doc();
+                QLPN = new QuanLyPhieuNhap();
+                QLPN.doc();
             	QLHD = new QuanLyHoaDon();
+            	QLHD.menu();
             	}
 
             default -> flag = false;
