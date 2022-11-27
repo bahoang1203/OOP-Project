@@ -173,10 +173,18 @@ public class QuanLyHoaDon extends ChucNangHoaDon {
 	
 	@Override
 	public void muahang() {
+		int n = 1;
+		int m = 1;
+		
+		if(dshd!=null) {
+			n = dshd.length+1;
+			
+		}
+		if(dscthd!=null) {
+			m = dscthd.length+1;
+		}
 		
 		HoaDon listhd = new HoaDon();
-		int n = dshd.length+1;
-		int m = dscthd.length+1;
 		//tự động set
 		String mahd = "HD"+n;
 		listhd.setMaHoaDon(mahd);
@@ -221,9 +229,15 @@ public class QuanLyHoaDon extends ChucNangHoaDon {
 				}
 					
 				listcthd.setTien(tien);
+				if(dscthd==null) {
+					dscthd = new ChiTietHoaDon[m];
+					dscthd[0] = listcthd;
+				}
+				else {
+					dscthd = Arrays.copyOf(dscthd, dscthd.length + 1);
+					dscthd[dscthd.length - 1] = listcthd;
+				}
 				
-				dscthd = Arrays.copyOf(dscthd, dscthd.length + 1);
-				dscthd[dscthd.length - 1] = listcthd;
 				
 				tongtien+=tien;
 				System.out.println("**Bạn muốn mua thêm món hàng nào khác không?");
@@ -245,8 +259,14 @@ public class QuanLyHoaDon extends ChucNangHoaDon {
 				break;
 			}		
 		}
-		dshd = Arrays.copyOf(dshd, dshd.length + 1);
-		dshd[dshd.length - 1] = listhd;
+		if(dshd==null) {
+			dshd = new HoaDon[n];
+			dshd[0] = listhd;
+		}
+		else {
+			dshd = Arrays.copyOf(dshd, dshd.length + 1);
+			dshd[dshd.length - 1] = listhd;
+		}
 		
 		xuathd();
 	}
