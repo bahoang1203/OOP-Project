@@ -231,13 +231,12 @@ public class QuanLyHoaDon extends ChucNangHoaDon {
 				listcthd.setTien(tien);
 				if(dscthd==null) {
 					dscthd = new ChiTietHoaDon[m];
-					dscthd[0] = listcthd;
+					dscthd[m-1] = listcthd;
 				}
 				else {
 					dscthd = Arrays.copyOf(dscthd, dscthd.length + 1);
 					dscthd[dscthd.length - 1] = listcthd;
 				}
-				
 				
 				tongtien+=tien;
 				System.out.println("**Bạn muốn mua thêm món hàng nào khác không?");
