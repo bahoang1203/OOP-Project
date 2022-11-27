@@ -260,7 +260,7 @@ public class QuanLyHoaDon extends ChucNangHoaDon {
 		}
 		if(dshd==null) {
 			dshd = new HoaDon[n];
-			dshd[0] = listhd;
+			dshd[n-1] = listhd;
 		}
 		else {
 			dshd = Arrays.copyOf(dshd, dshd.length + 1);
