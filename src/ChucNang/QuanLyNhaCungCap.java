@@ -18,12 +18,13 @@ public class QuanLyNhaCungCap implements ChucNang{
 	public NhaCungCap listncc[] = Main.getListncc();;
 	Scanner sc = new Scanner(System.in);
 	QuanLyNhaCungCap(){
+		doc();
 		System.out.println("+------------------------------+");
         System.out.println("|     QUAN LY NHA CUNG CAP     |");
         System.out.println("+------------------------------+");
 	}
 	public void menu() {
-		doc();
+		
 		boolean flag= true;
 		if(listncc ==null ||listncc.length==0) {
 			nhap();
@@ -41,7 +42,7 @@ public class QuanLyNhaCungCap implements ChucNang{
 							 + "|7. Thoát QLNCC                |\n"
 							 + "+------------------------------+");
 			System.out.print("-->Chọn chức năng: ");
-			int c = Integer.parseInt(sc.nextLine());
+			int c = Integer.parseInt(Main.sc.nextLine());
 			switch (c) {
 			case 1 -> them();
             case 2 -> xoa();
@@ -56,15 +57,15 @@ public class QuanLyNhaCungCap implements ChucNang{
 		if (flag == true) {
 			System.out.println();
             menu();
-        }
+			}
 		ghi();
-		}
+	}
 	@Override
 	public void nhap() {
 		// TODO Auto-generated method stub
 		System.out.println("Danh đang sách trống");
 		System.out.print("-->Nhập số phần tử muốn thêm vào: ");
-		int n = sc.nextInt();
+		int n = Integer.parseInt(sc.nextLine());
 		listncc = new NhaCungCap[n];
 		for(int i = 0 ;i<listncc.length;i++) {
 			listncc[i] = new NhaCungCap();
@@ -149,7 +150,7 @@ public class QuanLyNhaCungCap implements ChucNang{
 		String mancc = sc.nextLine();
 		for(i=0;i<listncc.length;i++) {
 			if(listncc[i].getMaCC().equalsIgnoreCase(mancc)) {
-				for(j=i;j<listncc.length;j++) {
+				for(j=i;j<listncc.length - 1;j++) {
 					listncc[j]=listncc[j+1];
 				}
 				listncc = Arrays.copyOf(listncc, listncc.length - 1);
@@ -178,7 +179,7 @@ public class QuanLyNhaCungCap implements ChucNang{
 			}
 			bw.close();
 			fw.close();
-		} catch (IOException e) {}
+		} catch (Exception e) {}
 		
 	}
 
@@ -199,7 +200,7 @@ public class QuanLyNhaCungCap implements ChucNang{
 			}
 			fr.close();
 			br.close();
-		} catch (IOException e) {}
+		} catch (Exception e) {}
 	}
 	@Override
 	public void timkiemtheoma() {

@@ -26,15 +26,16 @@ public class QuanLyPhieuNhap implements ChucNang{
             nhap();
         }
         else {
-            System.out.println("+--------------------+\n"
-                             + "|MENU                |\n"
-                             + "+--------------------+");
-            System.out.println("|1. Thêm kho         |\n"
-		                     + "|2. Xóa 1 kho        |\n"
-		                     + "|3. Sửa 1 kho        |\n"
-		                     + "|4. Xuất danh sách   |\n"
-		                     + "|5. Thoát QLK        |\n"
-		                     + "+--------------------+");
+            System.out.println("+------------------------------+\n"
+                             + "|MENU                          |\n"
+                             + "+------------------------------+");
+            System.out.println("|1. Thêm kho                   |\n"
+		                     + "|2. Xóa 1 kho                  |\n"
+		                     + "|3. Sửa 1 kho                  |\n"
+		                     + "|4. Xuất danh sách phiếu nhập  |\n"
+		                     + "|5. Tìm kiếm theo mã           |\n"
+							 + "|7. Thoát QLNCC                |\n"
+		                     + "+------------------------------+");
             System.out.print("-->Chọn chức năng: ");
             int chon = Integer.parseInt(Main.sc.nextLine());
             switch (chon) {
@@ -42,6 +43,7 @@ public class QuanLyPhieuNhap implements ChucNang{
                 case 2 -> xoa();
                 case 3 -> sua();
                 case 4 -> xuat();
+                case 5 -> timkiemtheoma();
                 default -> flag = false;
             }
         }
@@ -87,11 +89,11 @@ public class QuanLyPhieuNhap implements ChucNang{
 
 	@Override
 	public void xuat() {
-		System.out.println("+-------------------------------------+\n"
-                         + "|          DANH SACH PHIEU NHAP       |\n" 
-                         + "+-------------------------------------+\n"
-                         + "|MAPN |MAKHO|MAHANG|MANV |MANCC|SLUONG|\n"
-                         + "+-----+-----+------+-----+-----+------+");
+		System.out.println("+---------------------------------------+\n"
+                         + "|          DANH SACH PHIEU NHAP         |\n" 
+                         + "+---------------------------------------+\n"
+                         + "|MAPN   |MAKHO|MAHANG|MANV |MANCC|SLUONG|\n"
+                         + "+-------+-----+------+-----+-----+------+");
         for (PhieuNhap phieuNhap : phieuNhapList) {
             phieuNhap.xuatTT();
         }

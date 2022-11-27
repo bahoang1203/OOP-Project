@@ -23,7 +23,7 @@ public class QuanLyHangHoa implements ChucNang {
         System.out.println("|       QUAN LY HANG HOA       |");
         System.out.println("+------------------------------+");
 		boolean flag = true;
-		if (dshh == null) {
+		if (dshh == null||dshh.length==0) {
 			System.out.println("Danh đang sách trống!!");
 			nhap();
 			Main.setHangHoaList(dshh);

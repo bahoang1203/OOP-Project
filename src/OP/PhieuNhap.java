@@ -75,6 +75,6 @@ public class PhieuNhap {
 	}
 
 	public void xuatTT() {
-		System.out.println(String.format("|%-5s|%-5s|%-6s|%-5s|%-5s|%6d|", maPhieuNhap, maKho, maHang, maNV, maNCC, soLuong));	
+		System.out.println(String.format("|%-7s|%-5s|%-6s|%-5s|%-5s|%6d|", maPhieuNhap, maKho, maHang, maNV, maNCC, soLuong));	
 	}
 }

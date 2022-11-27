@@ -22,7 +22,7 @@ public class QuanLyLoaiHang implements ChucNang {
         System.out.println("+---------------------+");
 		boolean flag = true;
 		doc();
-		if (dslh==null) {
+		if (dslh==null||dslh.length==0) {
 			System.out.println("Danh sách đang trống");
 			nhap();
 			Main.setLoaiHang(dslh);
@@ -36,7 +36,7 @@ public class QuanLyLoaiHang implements ChucNang {
 						 		 + "|3. Sửa 1 Loại Hàng  |\n"
 						 		 + "|4. Xuất danh sách   |\n"
 						 		 + "|5. Tìm kiếm theo mã |\n"
-						 		 + "|6. Thoát QLLH       |"
+						 		 + "|6. Thoát QLLH       |\n"
 						 		 + "+--------------------+");
 				System.out.print("-->Chọn chức năng: ");
 				int chon = Integer.parseInt(sc.nextLine());
