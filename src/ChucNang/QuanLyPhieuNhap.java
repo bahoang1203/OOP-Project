@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.util.Arrays;
 
 import ChucNang.ChucNang;
+import OP.NhaCungCap;
 import OP.PhieuNhap;
 
 public class QuanLyPhieuNhap implements ChucNang{
@@ -238,6 +239,26 @@ public class QuanLyPhieuNhap implements ChucNang{
 		Main.setPhieuNhapList(phieuNhapList);
 		ghi();
 		return flag;
+	}
+	@Override
+	public void timkiemtheoma() {
+		// TODO Auto-generated method stub
+		xuat();
+		System.out.print("-->Nhập mã nhà cung cấp cần tìm: ");
+		String find = Main.sc.nextLine();
+		for(PhieuNhap pn: phieuNhapList) {
+			if(pn.getMaPhieuNhap().matches(find)||pn.getMaHang().matches(find)||pn.getMaKho().matches(find)||pn.getMaNCC().matches(find)) {
+				pn.xuatTT();
+				break;
+			}else {
+				System.out.println("Không");
+				break;
+			}
+		}
+	}
+	@Override
+	public void timkiemtheotengandung() {
+		//Bỏ phương thức này
 	}
 
 }

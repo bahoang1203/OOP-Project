@@ -7,6 +7,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import OP.HangHoa;
 import OP.KhachHang;
 public class QuanLyKhachHang implements ChucNang{
 	Scanner sc = new Scanner(System.in);
@@ -204,6 +208,39 @@ public class QuanLyKhachHang implements ChucNang{
 			fr.close();
 			br.close();
 		} catch (IOException e) {
+		}
+	}
+	@Override
+	public void timkiemtheoma() {
+		// TODO Auto-generated method stub
+		xuat();
+		System.out.print("-->Nhập mã khách hàng cần tìm: ");
+		String find = sc.nextLine();
+		for(KhachHang kh: listkh) {
+			if(kh.getMaKhachHang().matches(find)) {
+				kh.xuatTT();
+				break;
+			}else {
+				System.out.println("Không");
+				break;
+			}
+		}
+	}
+	@Override
+	public void timkiemtheotengandung() {
+		// TODO Auto-generated method stub
+		xuat();
+		System.out.print("-->Nhập tên khách hàng cần tìm: ");
+		Pattern pattern = Pattern.compile(sc.nextLine());
+		for(KhachHang kh: listkh) {
+			Matcher tmp = pattern.matcher(kh.getMaKhachHang());
+			boolean matchfound = tmp.find();
+			if(matchfound) {
+				kh.xuatTT();
+			}else {
+				System.out.println("Không");
+				break;
+			}
 		}
 	}
 }

@@ -5,8 +5,11 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import ChucNang.ChucNang;
+import OP.KhachHang;
 import OP.Kho;
 
 public class QuanLyKho implements ChucNang {
@@ -208,6 +211,39 @@ public class QuanLyKho implements ChucNang {
             fr.close();
         }
         catch(Exception e){}
+	}
+	@Override
+	public void timkiemtheoma() {
+		// TODO Auto-generated method stub
+		xuat();
+		System.out.print("-->Nhập mã kho cần tìm: ");
+		String find = Main.sc.nextLine();
+		for(Kho kho: khoList) {
+			if(kho.getMaKho().matches(find)) {
+				kho.xuatTT();
+				break;
+			}else {
+				System.out.println("Không");
+				break;
+			}
+		}
+	}
+	@Override
+	public void timkiemtheotengandung() {
+		// TODO Auto-generated method stub
+		xuat();
+		System.out.print("-->Nhập tên kho cần tìm: ");
+		Pattern pattern = Pattern.compile(Main.sc.nextLine());
+		for(Kho kho: khoList) {
+			Matcher tmp = pattern.matcher(kho.getTenKho());
+			boolean matchfound = tmp.find();
+			if(matchfound) {
+				kho.xuatTT();
+			}else {
+				System.out.println("Không");
+				break;
+			}
+		}
 	}
 
 }

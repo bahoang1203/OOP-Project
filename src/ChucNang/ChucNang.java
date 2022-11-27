@@ -6,6 +6,8 @@ public interface ChucNang {
 	public void them();
 	public void sua();
 	public void xoa();
+	public void timkiemtheoma();
+	public void timkiemtheotengandung();
 	public void ghi();
 	public void doc();
 }

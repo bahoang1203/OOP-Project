@@ -6,7 +6,10 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import OP.Kho;
 import OP.LoaiHang;
 
 public class QuanLyLoaiHang implements ChucNang {
@@ -192,6 +195,41 @@ public class QuanLyLoaiHang implements ChucNang {
 			br.close();
 			fr.close();
 		} catch (Exception e) {
+		}
+	}
+
+	@Override
+	public void timkiemtheoma() {
+		// TODO Auto-generated method stub
+		xuat();
+		System.out.print("-->Nhập mã loại hàng cần tìm: ");
+		String find = Main.sc.nextLine();
+		for(LoaiHang lh: dslh) {
+			if(lh.getMaLoaiHang().matches(find)) {
+				lh.xuat();
+				break;
+			}else {
+				System.out.println("Không");
+				break;
+			}
+		}
+	}
+
+	@Override
+	public void timkiemtheotengandung() {
+		// TODO Auto-generated method stub
+		xuat();
+		System.out.print("-->Nhập tên loại hàng cần tìm: ");
+		Pattern pattern = Pattern.compile(Main.sc.nextLine());
+		for(LoaiHang lh: dslh) {
+			Matcher tmp = pattern.matcher(lh.getTenLoaiHang());
+			boolean matchfound = tmp.find();
+			if(matchfound) {
+				lh.xuat();
+			}else {
+				System.out.println("Không");
+				break;
+			}
 		}
 	}
 

@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import OP.HangHoa;
 import OP.LoaiHang;
@@ -35,7 +37,9 @@ public class QuanLyHangHoa implements ChucNang {
 								 + "|2.Xóa 1 hàng hóa         |\n" 
 								 + "|3.Sửa 1 hàng hóa         |\n"
 								 + "|4.Xuất danh sách hàng hóa|\n"
-								 + "|5.Thoát QLHH             |\n"
+								 + "|5.Tìm kiếm theo mã       |\n"
+								 + "|6.Tìm kiếm tên gần đúng  |"
+								 + "|7.Thoát QLHH             |\n"
 								 + "+-------------------------+");
 				System.out.print("-->Chọn chức năng: ");
 				int chon = Integer.parseInt(sc.nextLine());
@@ -44,7 +48,9 @@ public class QuanLyHangHoa implements ChucNang {
 				case 2: xoa(); break;
 				case 3: sua(); break;
 				case 4: xuat(); break;
-				case 5: flag = false; break;
+				case 5: timkiemtheoma(); break;
+				case 6: timkiemtheotengandung(); break;
+				case 7: flag = false; break;
 				default: System.out.println("\nxin hãy chọn lại!"); break;
 				}	
 			}
@@ -180,7 +186,35 @@ public class QuanLyHangHoa implements ChucNang {
 		xuat();
 
 	}
-
+	public void timkiemtheoma() {
+		xuat();
+		System.out.print("-->Nhập mã hàng cần tìm: ");
+		String find = sc.nextLine();
+		for(HangHoa hh: dshh) {
+			if(hh.getMaHang().matches(find)||hh.getMaLoaiHang().matches(find)) {
+				hh.xuat();
+				break;
+			}else {
+				System.out.println("Không");
+				break;
+			}
+		}
+	}
+	public void timkiemtheotengandung() {
+		xuat();
+		System.out.print("-->Nhập mã tên hàng cần tìm: ");
+		Pattern pattern = Pattern.compile(sc.nextLine());
+		for(HangHoa hh: dshh) {
+			Matcher tmp = pattern.matcher(hh.getMaHang());
+			boolean matchfound = tmp.find();
+			if(matchfound) {
+				hh.xuat();
+			}else {
+				System.out.println("Không");
+				break;
+			}
+		}
+	}
 	@Override
 	public void ghi() {
 		try {
