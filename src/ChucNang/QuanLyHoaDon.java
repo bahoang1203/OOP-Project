@@ -55,7 +55,6 @@ public class QuanLyHoaDon extends ChucNangHoaDon {
 				int chon = Integer.parseInt(sc.nextLine());
 				switch (chon) {
 				case 1:
-					qlhh.xuat();
 					muahang();
 					break;
 				case 2:
@@ -173,6 +172,7 @@ public class QuanLyHoaDon extends ChucNangHoaDon {
 	
 	@Override
 	public void muahang() {
+		qlhh.xuat();
 		int n = 1;
 		int m = 1;
 		
