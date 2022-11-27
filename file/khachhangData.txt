@@ -1,5 +1,0 @@
-4
-kh2;Circle K;099999999;Cirkle K Nguyen Anh Thu
-kh3;NgUyEn TeN KhO ChIu Vl;1923912031;Con cai nit
-kh4;Van Ten Doan Hoang;077777777;Ten doan hoang nen dia chi cung phai doan hoang...
-kh5;Quan;01239912;K21, duong so 9, phuong Tan Binh

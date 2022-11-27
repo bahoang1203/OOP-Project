@@ -10,6 +10,7 @@ import OP.Kho;
 import OP.PhieuNhap;
 import OP.LoaiHang;
 import OP.NhaCungCap;
+import OP.NhanVien;
 
 public class Main {
     public static Scanner sc;
@@ -21,14 +22,17 @@ public class Main {
     private static HoaDon[] listhd;
     private static ChiTietHoaDon[] listcthd;
     private static NhaCungCap[] listncc;
-    
-    private static QuanLyKho QLK;
+    private static NhanVien[] listnv;
+
+	private static QuanLyKho QLK;
     private static QuanLyKhachHang CNKH;
     private static QuanLyPhieuNhap QLPN;
     private static QuanLyLoaiHang QLLH;
     private static QuanLyHangHoa QLHH;
     private static QuanLyHoaDon QLHD;
     private static QuanLyNhaCungCap QLNCC;
+    private static QuanLyNhanVien QLNV;
+    
     
     public static void main(String[] args) {
         sc = new Scanner(System.in);
@@ -46,18 +50,18 @@ public class Main {
         System.out.println("+--------------------------+\n"
                          + "|   MAIN MENU              |\n"
                          + "+--------------------------+");
-        System.out.println("|1. Quan ly kho            |\n"
-                         + "|2. Quan ly phieu nhap     |\n"
-                         + "|3. Quan ly khach hang     |\n"
-                         + "|4. Quan ly nha cung cap   |\n"
-                         + "|5. Quan ly loai hang      |\n"
-                         + "|6. Quan ly hang hoa	   |\n"
-                         + "|7. Quan ly nhan vien      |\n"
-                         + "|8. Quan ly hoa don        |\n"
-                         + "|   va mua hang            |\n"
-                         + "|9. Thoat                  |\n"
+        System.out.println("|1. Quản lý kho            |\n"
+                         + "|2. Quản lý phiếu nhập     |\n"
+                         + "|3. Quản lý nhân viên      |\n"
+                         + "|4. Quản lý khách hàng     |\n"
+                         + "|5. Quản lý nhà cung cấp   |\n"
+                         + "|6. Quản lý loại hàng      |\n"
+                         + "|7. Quản lý hàng hóa	   |\n"
+                         + "|8. Quản lý hóa đơn        |\n"
+                         + "|   và mua hàng            |\n"
+                         + "|9. Thoát                  |\n"
                          + "+--------------------------+");
-        System.out.print("--> Moi ban chon: ");
+        System.out.print("--> Mời bạn chọn: ");
         int c = Integer.parseInt(sc.nextLine());
         switch (c) {
             case 1 -> {
@@ -68,25 +72,27 @@ public class Main {
                 QLPN = new QuanLyPhieuNhap();
                 QLPN.menu();
             }
-            case 3 ->{
+            case 3 -> {
+            	QLNV = new QuanLyNhanVien();
+            	QLNV.menu();
+            }
+            case 4 ->{
             	CNKH = new QuanLyKhachHang();
             	CNKH.menu();
             }
-            case 4 ->{
+            case 5 ->{
             	QLNCC = new QuanLyNhaCungCap();
             	QLNCC.menu();
             }
-            case 5 ->{
+            case 6 ->{
             	QLLH = new QuanLyLoaiHang();
             	QLLH.menu();
             	}
-            case 6 ->{
+            case 7 ->{
             	QLLH = new QuanLyLoaiHang();
                 QLLH.doc();
             	QLHH = new QuanLyHangHoa();
             	QLHH.menu();
-            	}
-            case 7->{
             	}
             case 8->{
             	QLHH = new QuanLyHangHoa();
@@ -166,6 +172,11 @@ public class Main {
 	public static void setListncc(NhaCungCap[] listncc) {
 		Main.listncc = listncc;
 	}
-   
-    
+	public static NhanVien[] getListnv() {
+		return listnv;
+	}
+
+	public static void setListnv(NhanVien[] listnv) {
+		Main.listnv = listnv;
+	}
 }

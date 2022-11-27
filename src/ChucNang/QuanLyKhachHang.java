@@ -28,15 +28,17 @@ public class QuanLyKhachHang implements ChucNang{
             nhap();
         }
         else {
-            System.out.println("+--------------------+\n"
-                             + "|MENU                |\n"
-                             + "+--------------------+");
-            System.out.println("|1. Thêm 1 khách hàng|\n"
-                             + "|2. Xóa 1 khách hàng |\n"
-                             + "|3. Sửa 1 khách hàng |\n"
-                             + "|4. Xuất danh sách   |\n"
-                             + "|5. Thoát QLKH       |\n"
-                             + "+--------------------+");
+            System.out.println("+------------------------------+\n"
+                             + "|MENU                          |\n"
+                             + "+------------------------------+");
+            System.out.println("|1. Thêm 1 khách hàng          |\n"
+                             + "|2. Xóa 1 khách hàng           |\n"
+                             + "|3. Sửa 1 khách hàng           |\n"
+                             + "|4. Xuất danh sách khách hàng  |\n"
+                             + "|5. Tìm kiếm theo mã           |\n"
+							 + "|6. Tìm kiếm tên gần đúng      |\n"
+							 + "|7. Thoát QLKH                 |\n"
+                             + "+------------------------------+");
             System.out.print("-->Chọn chức năng: ");
             int chon = Integer.parseInt(sc.nextLine());
             switch (chon) {
@@ -44,6 +46,8 @@ public class QuanLyKhachHang implements ChucNang{
                 case 2 -> xoa();
                 case 3 -> sua();
                 case 4 -> xuat();
+                case 5 -> timkiemtheoma();
+                case 6 -> timkiemtheotengandung(); 
                 default -> flag = false;
             }
         }
@@ -85,7 +89,7 @@ public class QuanLyKhachHang implements ChucNang{
 		for(KhachHang khtt:listkh) {
 			if(khtt.getMaKhachHang().equalsIgnoreCase(kh.getMaKhachHang())) {
 				flag = false;
-				System.out.print("**Trung Ma Khach Hang**");
+				System.out.print("::Trùng mã khách hàng::");
 				break;
 			}
 		}
@@ -100,7 +104,7 @@ public class QuanLyKhachHang implements ChucNang{
 			listkh = Arrays.copyOf(listkh, listkh.length+1);
 			listkh[listkh.length-1]=kh;
 		}
-		System.out.print("-->Ban co muon tiep tuc them 1 phan tu (y/n)? ");
+		System.out.print("**Bạn có muốn thêm tiếp (y/n)?");
         String c = sc.nextLine();
         if (c.equalsIgnoreCase("y")) {
             them();
@@ -114,7 +118,7 @@ public class QuanLyKhachHang implements ChucNang{
 			int i;
 			boolean flag = false;
 			xuat();
-			System.out.print("-->Nhap ma khach hang can sua: ");
+			System.out.print("-->Hãy nhập mã khách hàng muốn sửa: ");
 			String s = sc.nextLine();
 			for(i = 0;i<listkh.length;i++) {
 				if(listkh[i].getMaKhachHang().equalsIgnoreCase(s)) {
@@ -123,22 +127,23 @@ public class QuanLyKhachHang implements ChucNang{
 				}
 			}
 			if(flag == true) {
-				System.out.print("Nhap ten kh moi: ");
+				System.out.print("Nhập tên khách hàng mới: ");
 				listkh[i].setTenKhachHang(sc.nextLine());
-				System.out.print("Nhap SDT moi");
+				System.out.print("Nhập SDT mới");
 				listkh[i].setSDT(sc.nextLine());
-				System.out.print("Nhap dia chi moi");
+				System.out.print("Nhập đỉa chỉ mới");
 				listkh[i].setDiaChi(sc.nextLine());
 				
 			}else {
-				System.out.print("Ma khach hang khong ton tai");
+				System.out.print("::Mã khách hàng không tồn tại::");
 			}
-			System.out.print("-->Ban co can sua them (y/n");
+			System.out.println("**Bạn có muốn sửa tiếp (y/n)?");
 			String c = sc.nextLine();
 			if(c.equalsIgnoreCase("y")) {
 				sua();
+				}
 			}
-		}
+		xuat();
 	}
 
 	@Override
@@ -148,7 +153,7 @@ public class QuanLyKhachHang implements ChucNang{
 			int i;
 			boolean flag = false;
 			xuat();
-			System.out.print("-->Nhap ma khach hang can xoa");
+			System.out.print("-->Hãy nhập mã khách hàng muốn xóa: ");
 			String s = sc.nextLine();
 			for(i = 0;i<listkh.length;i++) {
 				if(listkh[i].getMaKhachHang().equalsIgnoreCase(s));
@@ -161,9 +166,9 @@ public class QuanLyKhachHang implements ChucNang{
 				}
 				listkh = Arrays.copyOf(listkh, listkh.length-1);
 			}else {
-				System.out.print("Ma khach hang khong ton tai");
+				System.out.print("::Mã khách hàng không tồn tại::");
 			}
-			System.out.print("-->Ban co can sua them (y/n)");
+			System.out.println("**Bạn có muốn xóa tiếp (y/n)?");
 			String c = sc.nextLine();
 			if(c.equalsIgnoreCase("y")) {
 				xoa();
@@ -207,7 +212,7 @@ public class QuanLyKhachHang implements ChucNang{
 			}
 			fr.close();
 			br.close();
-		} catch (IOException e) {
+		} catch (Exception e) {
 		}
 	}
 	@Override

@@ -35,7 +35,8 @@ public class QuanLyLoaiHang implements ChucNang {
 						 		 + "|2. Xóa 1 Loại Hàng  |\n" 
 						 		 + "|3. Sửa 1 Loại Hàng  |\n"
 						 		 + "|4. Xuất danh sách   |\n"
-						 		 + "|5. Thoát QLHH       |\n"
+						 		 + "|5. Tìm kiếm theo mã |\n"
+						 		 + "|6. Thoát QLLH       |"
 						 		 + "+--------------------+");
 				System.out.print("-->Chọn chức năng: ");
 				int chon = Integer.parseInt(sc.nextLine());
@@ -44,7 +45,8 @@ public class QuanLyLoaiHang implements ChucNang {
 				case 2: xoa(); break;
 				case 3: sua(); break;
 				case 4: xuat(); break;
-				case 5: flag = false; break;
+				case 5: timkiemtheoma();
+				case 6: flag = false; break;
 				default: System.out.println("\nxin hãy chọn lại!"); break;
 				}
 			}
@@ -54,7 +56,7 @@ public class QuanLyLoaiHang implements ChucNang {
 		ghi();
 	}
 	
-	boolean check(LoaiHang lh) {
+	private boolean check(LoaiHang lh) {
 		boolean flag = true;
 		if (lh.getMaLoaiHang().isEmpty() || lh.getTenLoaiHang().isEmpty()) {
 			System.out.println("::Xin hãy nhập đủ thông tin::");

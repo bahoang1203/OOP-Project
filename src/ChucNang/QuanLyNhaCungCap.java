@@ -29,15 +29,17 @@ public class QuanLyNhaCungCap implements ChucNang{
 			nhap();
 			
 		}else {
-			System.out.println("+--------------------+\n" 
-							 + "|MENU                |\n" 
-							 + "+--------------------+");
-			System.out.println("|1. Thêm 1 NCC       |\n" 
-							 + "|2. Xóa 1 NCC        |\n" 
-							 + "|3. Sửa 1 NCC        |\n"
-							 + "|4. Xuất danh sách   |\n"
-							 + "|5. Thoát QLNCC      |\n"
-							 + "+--------------------+");
+			System.out.println("+------------------------------+\n" 
+							 + "|MENU                          |\n" 
+							 + "+------------------------------+");
+			System.out.println("|1. Thêm 1 nhà cung cấp        |\n" 
+							 + "|2. Xóa 1 nhà cung cấp         |\n" 
+							 + "|3. Sửa 1 nhà cung cấp         |\n"
+							 + "|4. Xuất danh sách nhà cung cấp|\n"
+							 + "|5. Tìm kiếm theo mã           |\n"
+							 + "|6. Tìm kiếm tên gần đúng      |\n"
+							 + "|7. Thoát QLNCC                |\n"
+							 + "+------------------------------+");
 			System.out.print("-->Chọn chức năng: ");
 			int c = Integer.parseInt(sc.nextLine());
 			switch (c) {
@@ -45,6 +47,8 @@ public class QuanLyNhaCungCap implements ChucNang{
             case 2 -> xoa();
             case 3 -> sua();
             case 4 -> xuat();
+            case 5 -> timkiemtheoma();
+            case 6 -> timkiemtheotengandung(); 
             default -> flag = false;
 				}
 			}
@@ -116,7 +120,7 @@ public class QuanLyNhaCungCap implements ChucNang{
 	public void sua() {
 		// TODO Auto-generated method stub
 		xuat();
-		System.out.print("-->Hãy chọn mã nhà cung cấp: ");
+		System.out.print("-->Hãy chọn mã nhà cung cấp muốn sửa: ");
 		String mancc = sc.nextLine();
 		for(int i = 0 ;i<listncc.length;i++) {
 			if(listncc[i].getMaCC().equalsIgnoreCase(mancc)) {
@@ -126,6 +130,8 @@ public class QuanLyNhaCungCap implements ChucNang{
 				listncc[i].setSDT(sc.nextLine());
 				System.out.print("Nhập dịa chỉ mới : ");
 				listncc[i].setDiaChi(sc.nextLine());
+			}else {
+				System.out.println("Mã nhà cung cấp không tồn tại");
 			}
 		}
 		System.out.println("**Bạn có muốn sửa tiếp (y/n)?");

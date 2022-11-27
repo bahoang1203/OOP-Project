@@ -224,7 +224,7 @@ public class QuanLyPhieuNhap implements ChucNang{
         catch(Exception e){}
 	}
 	
-	boolean giamsoluong(int soluong, String mahang) {
+	public boolean giamsoluong(int soluong, String mahang) {
 		boolean flag = false;
 		int dem = 0;
 		for(PhieuNhap pn: phieuNhapList) {

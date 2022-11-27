@@ -24,23 +24,23 @@ public class QuanLyHangHoa implements ChucNang {
         System.out.println("+------------------------------+");
 		boolean flag = true;
 		if (dshh == null) {
-			System.out.println("Danh đang sách trống");
+			System.out.println("Danh đang sách trống!!");
 			nhap();
 			Main.setHangHoaList(dshh);
 		}
 		else {
 			while (flag == true) {
-				System.out.println("+-------------------------+\n"
-							 	 + "|MENU                     |\n"
-								 + "+-------------------------+");
-				System.out.println("|1.Thêm 1 hàng hóa        |\n" 
-								 + "|2.Xóa 1 hàng hóa         |\n" 
-								 + "|3.Sửa 1 hàng hóa         |\n"
-								 + "|4.Xuất danh sách hàng hóa|\n"
-								 + "|5.Tìm kiếm theo mã       |\n"
-								 + "|6.Tìm kiếm tên gần đúng  |"
-								 + "|7.Thoát QLHH             |\n"
-								 + "+-------------------------+");
+				System.out.println("+--------------------------+\n"
+							 	 + "|MENU                      |\n"
+								 + "+--------------------------+");
+				System.out.println("|1. Thêm 1 hàng hóa        |\n" 
+								 + "|2. Xóa 1 hàng hóa         |\n" 
+								 + "|3. Sửa 1 hàng hóa         |\n"
+								 + "|4. Xuất danh sách hàng hóa|\n"
+								 + "|5. Tìm kiếm theo mã       |\n"
+								 + "|6. Tìm kiếm tên gần đúng  |\n"
+								 + "|7. Thoát QLHH             |\n"
+								 + "+--------------------------+");
 				System.out.print("-->Chọn chức năng: ");
 				int chon = Integer.parseInt(sc.nextLine());
 				switch (chon) {
@@ -68,7 +68,7 @@ public class QuanLyHangHoa implements ChucNang {
 		return 0;
 	}
 
-	boolean check(HangHoa hh) {
+	private boolean check(HangHoa hh) {
 		boolean flag = true;
 		if (hh.getMaLoaiHang().isEmpty() || hh.getTenHang().isEmpty() || hh.getMaLoaiHang().isEmpty()) {
 			System.out.println("::Xin hãy nhập đủ thông tin::");
@@ -102,7 +102,7 @@ public class QuanLyHangHoa implements ChucNang {
 	@Override
 	public void nhap() {
 		try {
-			System.out.println("-->Nhập số phần tử muốn thêm vào: ");
+			System.out.println("-->Nhập số hàng hóa muốn thêm vào: ");
 			int n = Integer.parseInt(sc.nextLine());
 			dshh = new HangHoa[n];
 			for (int i = 0; i < dshh.length; i++) {
@@ -148,7 +148,7 @@ public class QuanLyHangHoa implements ChucNang {
 	@Override
 	public void sua() {
 		xuat();
-		System.out.print("-->Nhập mã loại hàng cần sửa: ");
+		System.out.print("-->Hẫy nhập mã loại hàng cần sửa: ");
 		String mahang = sc.nextLine();
 		for (int i = 0; i < dshh.length; i++) {
 			if (dshh[i].getMaHang().equalsIgnoreCase(mahang)) {
@@ -170,7 +170,7 @@ public class QuanLyHangHoa implements ChucNang {
 	public void xoa() {
 		int i, j;
 		xuat();
-		System.out.print("-->Nhập mã hàng hóa cần xóa: ");
+		System.out.print("-->Hãy nhập mã hàng hóa cần xóa: ");
 		String mahang = sc.nextLine();
 		for (i = 0; i < dshh.length; i++) {
 			if (dshh[i].getMaHang().equalsIgnoreCase(mahang)) {

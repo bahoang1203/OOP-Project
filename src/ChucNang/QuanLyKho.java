@@ -27,15 +27,17 @@ public class QuanLyKho implements ChucNang {
             nhap();
         }
         else {
-            System.out.println("+--------------------+\n"
-                             + "|MENU                |\n"
-                             + "+--------------------+");
-            System.out.println("|1. Thêm kho         |\n"
-                             + "|2. Xóa 1 kho        |\n"
-                             + "|3. Sửa 1 kho        |\n"
-                             + "|4. Xuất danh sách   |\n"
-                             + "|5. Thoát QLK        |\n"
-                             + "+--------------------+");
+            System.out.println("+------------------------+\n"
+                             + "|MENU                    |\n"
+                             + "+------------------------+");
+            System.out.println("|1. Thêm kho             |\n"
+                             + "|2. Xóa 1 kho            |\n"
+                             + "|3. Sửa 1 kho            |\n"
+                             + "|4. Xuất danh sách       |\n"
+                             + "|5. Tìm kiếm theo mã     |\n"
+							 + "|6. Tìm kiếm tên gần đúng|\n"
+							 + "|7. Thoát QLK            |\n"
+                             + "+------------------------+");
             System.out.print("-->Chọn chức năng: ");
             int chon = Integer.parseInt(Main.sc.nextLine());
             switch (chon) {
@@ -43,6 +45,8 @@ public class QuanLyKho implements ChucNang {
                 case 2 -> xoa();
                 case 3 -> sua();
                 case 4 -> xuat();
+                case 5 -> timkiemtheoma();
+                case 6 -> timkiemtheotengandung(); 
                 default -> flag = false;
             }
         }
