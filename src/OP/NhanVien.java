@@ -3,8 +3,8 @@ package OP;
 import java.util.Scanner;
 
 public class NhanVien {
-    String maNhanVien, hoTen, soDienThoai, diaChi;
-    float luong;
+    protected String maNhanVien, hoTen, soDienThoai, diaChi;
+    protected float luong;
     protected float luongCoBan;
     Scanner scanner = new Scanner(System.in);
 

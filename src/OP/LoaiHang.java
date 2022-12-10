@@ -5,8 +5,8 @@ import java.util.Scanner;
 import ChucNang.Main;
 
 public class LoaiHang {
-	String MaLoaiHang;
-	String TenLoaiHang;
+	private String MaLoaiHang;
+	private String TenLoaiHang;
 	public LoaiHang(String maLoaiHang, String tenLoaiHang) {
 		super();
 		MaLoaiHang = maLoaiHang;

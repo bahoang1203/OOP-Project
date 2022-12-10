@@ -22,7 +22,7 @@ public class QuanLyLoaiHang implements ChucNang {
         System.out.println("+---------------------+");
 		boolean flag = true;
 		doc();
-		if (dslh==null||dslh.length==0) {
+		if (dslh==null) {
 			System.out.println("Danh sách đang trống");
 			nhap();
 			Main.setLoaiHang(dslh);

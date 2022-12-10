@@ -265,7 +265,7 @@ public class QuanLyNhanVien implements ChucNang {
 		System.out.print("-->Nhập tên nhân viên cần tìm: ");
 		Pattern pattern = Pattern.compile(sc.nextLine());
 		for(NhanVien nv: listnv) {
-			Matcher tmp = pattern.matcher(nv.getMaNhanVien());
+			Matcher tmp = pattern.matcher(nv.getHoTen());
 			boolean matchfound = tmp.find();
 			if(matchfound) {
 				nv.xuatTT();

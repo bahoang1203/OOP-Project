@@ -23,8 +23,8 @@ public class QuanLyHangHoa implements ChucNang {
         System.out.println("|       QUAN LY HANG HOA       |");
         System.out.println("+------------------------------+");
 		boolean flag = true;
-		if (dshh == null||dshh.length==0) {
-			System.out.println("Danh đang sách trống!!");
+		if (dshh == null) {
+			System.out.println("Danh sách đang trống!!");
 			nhap();
 			Main.setHangHoaList(dshh);
 		}
@@ -205,7 +205,7 @@ public class QuanLyHangHoa implements ChucNang {
 		System.out.print("-->Nhập mã tên hàng cần tìm: ");
 		Pattern pattern = Pattern.compile(sc.nextLine());
 		for(HangHoa hh: dshh) {
-			Matcher tmp = pattern.matcher(hh.getMaHang());
+			Matcher tmp = pattern.matcher(hh.getTenHang());
 			boolean matchfound = tmp.find();
 			if(matchfound) {
 				hh.xuat();

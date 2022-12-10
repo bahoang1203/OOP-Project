@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class KhachHang {
 	Scanner sc = new Scanner(System.in);
-	String MaKhachHang;
-	String TenKhachHang;
-	String SDT;
-	String DiaChi;
+	private String MaKhachHang;
+	private String TenKhachHang;
+	private String SDT;
+	private String DiaChi;
 	public KhachHang(String maKhachHang, String tenKhachHang, String sDT, String diaChi) {
 		MaKhachHang = maKhachHang;
 		TenKhachHang = tenKhachHang;

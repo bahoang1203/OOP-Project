@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class NhaCungCap {
 	Scanner sc = new Scanner(System.in);
-	String MaCC;
-	String TenCC;
-	String SDT;
-	String DiaChi;
+	private String MaCC;
+	private String TenCC;
+	private String SDT;
+	private String DiaChi;
 	public NhaCungCap(String maCC, String tenCC, String sDT, String diaChi) {
 		super();
 		MaCC = maCC;

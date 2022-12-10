@@ -238,7 +238,7 @@ public class QuanLyKhachHang implements ChucNang{
 		System.out.print("-->Nhập tên khách hàng cần tìm: ");
 		Pattern pattern = Pattern.compile(sc.nextLine());
 		for(KhachHang kh: listkh) {
-			Matcher tmp = pattern.matcher(kh.getMaKhachHang());
+			Matcher tmp = pattern.matcher(kh.getTenKhachHang());
 			boolean matchfound = tmp.find();
 			if(matchfound) {
 				kh.xuatTT();
